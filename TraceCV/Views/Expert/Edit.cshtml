@@ -1,0 +1,221 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Expert;
+@{
+}
+<h2>Update Expert Details</h2>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<form asp-action="Index" id="createExpertForm" method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col">
+            <!-- User details -->
+            <div class="form-group">
+                <label for="Name">Name:</label>
+                <input asp-for="Name" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="Gender">Gender:</label>
+                @Html.DropDownListFor(model => model.Gender, (SelectList)ViewBag.GenderList, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label for="DOB">Date of Birth:</label>
+                <input type="date" asp-for="DOB" class="form-control" required />
+            </div>
+            <div class="form-group">
+                @for (int i = 0; i < Model.Languages.Count; i++)
+                {
+                    <div>
+                        <label>Language @(i+1):</label>
+                        <input asp-for="Languages[i].Type" class="form-control" />
+                    </div>
+                }
+                <!-- Other contact fields... -->
+                <button type="button" id="addLanguage" class="btn btn-primary">Add Language</button>
+            </div>
+            <div class="form-group">
+                <label for="Name">Current Employer:</label>
+                <input asp-for="CurrentEmployer" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="WorkedWith2ML">Ever Worked With 2ML:</label>
+                <input type="checkbox" asp-for="WorkedWith2ML" class="form-check-input" class="form-check-input" required />
+            </div>
+            <div class="form-group">
+                <label for="Name">Category:</label>
+                <select asp-for="Gender" class="form-control">
+                    <option selected> Please Select Category</option>
+                    <option value="Trainee">Trainee</option>
+                    <option value="FullTime Staff">FullTime Staff</option>
+                    <option value="Short term basis associate">Short term basis associate</option>
+                    <option value="Long term basis">Long term basis</option>
+                </select>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="Email">Email:</label>
+                <input asp-for="Email" class="form-control" />
+            </div>
+            <div class="form-group">
+                <div id="contactsContainer">
+                    @for (int i = 0; i < Model.Contacts.Count; i++)
+                    {
+                        <div>
+                            <label>Phone Number @(i+1):</label>
+                            <input asp-for="Contacts[i].PhoneNumber" class="form-control" />
+                        </div>
+                    }
+                </div>
+                <button type="button" id="addContact" class="btn btn-primary">Add Contact</button>
+            </div>
+            <div class="form-group">
+                <label for="Speciality">Area of Speciality:</label>
+                <select asp-for="Speciality" class="form-control">
+                    <option selected> Please Select Expert's Speciality</option>
+                    <option value="ICT">ICT</option>
+                    <option value="Economist">Economist</option>
+                    <option value="Engineering">Engineering</option>
+                    <option value="Human Resource">Human Resource</option>
+                    <option value="M&E">M&E</option>
+                    <option value="Enviroment">Enviroment</option>
+                    <option value="GIS">GIS</option>
+                    <option value="Policy Regulation & legal">Policy Regulation & legal</option>
+                    <option value="PPP (Public Private Partnership)">PPP (Public Private Partnership)</option>
+                    <option value="Sociologist">Sociologist</option>
+                    <option value="Commercial">Commercial</option>
+                    <option value="WASH/ Sanitation">WASH/ Sanitation</option>
+                </select>
+            </div>
+            <!-- Educations -->
+            <div id="educationsContainer" class="form-group">
+                <label for="Educations[0].Level">Education Level:</label>
+                <select asp-for="Educations[0].Level" class="form-control">
+                    <option selected> Please Select Level of Educatiin</option>
+                    <option value="Bachelors">Bachelors</option>
+                    <option value="Masters">Masters</option>
+                    <option value="Doctorate">Doctorate</option>
+                </select>
+            </div>
+            @* <div id="educationsContainer" class="form-group">
+            <label for="Education[0].Level">Others:</label>
+            <input name="Education[0].Level" class="form-control" />
+            </div> *@
+            <div class="form-group">
+                <label for="CvFile">Upload File:</label>
+                <input type="file" asp-for="CvFile" name="CvFile" class="form-control" />
+
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="CvFilePath" name="CvFilePath" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <button type="submit" class="btn btn-success">Create</button>
+    </div>
+</form>
+
+<!-- Add Bootstrap JS (if needed) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+@*  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js" integrity="sha384-i4bhE4ydHVNvIjEjdj1J7Pp/P4PLxIh0DIqPEboujFpYBFeD8M4N00xOnbM86dX0" crossorigin="anonymous"></script> *@
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgydD0PJR2EEfdhxbnEJsXl3pib4hL/nyJdFfVZxMSa8vF1NnCCnIZDYzX5" crossorigin="anonymous"></script>
+<!-- Your AJAX script here... -->
+@section scripts {
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Add Contact
+            $("#addLanguage").click(function () {
+                var index = $("#languagesContainer input").length;
+
+                var newLanguageHtml = `
+                                    <div>
+                                                                <label>Language${index + 1}:</label>
+                                        <input name="Languages[${index}].Type" class="form-control" />
+                                        <!-- Other contact fields... -->
+                                    </div>
+                                `;
+
+                $("#languagesContainer").append(newLanguageHtml);
+            });
+
+            //add phone contacts
+            $("#addContact").click(function () {
+                var index2 = $("#contactsContainer input").length;
+
+                var newContactHtml = `
+                                            <div>
+                                                                                <label>Phone Number${index2 + 1}:</label>
+                                                        <input name="Contacts[${index2}].Language" class="form-control" />
+                                                <!-- Other contact fields... -->
+                                            </div>
+                                        `;
+
+                $("#contactsContainer").append(newContactHtml);
+            });
+
+            // Add Education
+            $("#addEducation").click(function () {
+                var index = $("#educationsContainer input").length;
+
+                var newEducationHtml = `
+                                    <div>
+                                        <label>Education Level:</label>
+                                        <input name="Educations[${index}].Level" class="form-control" />
+                                        <!-- Other education fields... -->
+                                    </div>
+                                `;
+
+                $("#educationsContainer").append(newEducationHtml);
+            });
+
+            // AJAX for dynamic additions (if needed)
+            // $("#createExpertForm").submit(function (event) {
+            //     event.preventDefault();
+
+            //     $.ajax({
+            //         url: $(this).attr("action"),
+            //         type: $(this).attr("method"),
+            //         data: new FormData(this),
+            //         processData: false,
+            //         contentType: false,
+            //         success: function (response) {
+            //             // Handle success
+            //         },
+            //         error: function (error) {
+            //             // Handle error
+            //         }
+            //     });
+            // });
+            // $("#createExpertForm").submit(function (event) {
+            //     event.preventDefault();
+
+            //     $.ajax({
+            //         url: $(this).attr("action"),
+            //         type: $(this).attr("method"),
+            //         data: $(this).serialize(),
+            //         success: function (response) {
+            //             // Handle success, e.g., redirect or show a success message
+            //         },
+            //         error: function (error) {
+            //             // Handle error, e.g., display an error message
+            //         }
+            //     });
+            // });
+        });
+    </script>
+}
