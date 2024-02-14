@@ -1,16 +1,55 @@
 ﻿@model List<Expert>
 
 <h2>Expert List</h2>
-<div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Actions
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
+<form asp-action="Index" id="createExpertForm" method="post" >
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label for="Name">Name:</label>
+                <input class="form-control" required />
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="Name">Nationality:</label>
+                <select class="form-control" required id="nationalityDropdown">
+                    <option value="" selected> Please Select Nationality</option>
+                </select>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="Name">Key Sector:</label>
+                <input class="form-control" required />
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="Name">Minimum Degree</label>
+                <input class="form-control" required />
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="Name">Gender</label>
+                <input class="form-control" required />
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="Name">Language</label>
+                <input class="form-control" required />
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <br />
+                <label for="Name"></label>
+                <button type="button" id="addLanguage" class="btn btn-primary">Search</button>
+            </div>
+        </div>
     </div>
-</div>
+</form>
 <table class="table table-striped table-hover">
     <thead>
         <tr>
@@ -32,6 +71,44 @@
                 <td>@expert.WorkedWith2ML</td>
                 <td>
                     <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="actionsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Actions
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="actionsDropdown">
+                            <a class="dropdown-item" href="@Url.Action("Edit", new { id = expert.Id })">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="dropdown-item" href="@Url.Action("Delete", new { id = expert.Id })" onclick="return confirm('Are you sure you want to delete this expert?')">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                            <a class="dropdown-item" href="@Url.Content(expert.CvFilePath)" download>
+                                <i class="fas fa-download"></i> Download CV
+                            </a>
+                        </div>
+                    </div>
+                    @* <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                            Dropdown Example
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">HTML</a></li>
+                            <li><a href="#">CSS</a></li>
+                            <li><a href="#">JavaScript</a></li>
+                        </ul>
+                    </div> *@
+                    @* <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown button
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </div> *@
+
+                    @* <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Actions
                         </button>
@@ -40,7 +117,7 @@
                             <a class="dropdown-item" href="#">Another action</a>
                             <a class="dropdown-item" href="#">Something else here</a>
                         </div>
-                    </div>
+                    </div> *@
                     @* <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="actionsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Actions
@@ -59,10 +136,41 @@
         }
     </tbody>
 </table>
+@section scripts {
+    @* <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> *@
+    <script>
+        $(document).ready(function () {
+            $("#nationalityDropdown").select2({
+                placeholder: "Search for a country",
+                allowClear: true,
+                minimumInputLength: 0, // Set the minimum number of characters before showing results
+                ajax: {
+                    delay: 50,
+                    url: 'https://restcountries.com/v2/all',
+                    dataType: 'json',
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data, function (country) {
+                                return {
+                                    id: country.alpha3Code,
+                                    text: country.name
+                                };
+                            })
+                        };
+                    }
+                }
+            });
+        });
+    </script>
+}
 <script>
     if (window.jQuery) {
         console.log("jQuery is loaded!");
     } else {
         console.log("jQuery is NOT loaded!");
     }
+    // $(document).ready(function () {
+    //     $('.dropdown-toggle').dropdown();
+    // });
 </script>

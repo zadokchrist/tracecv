@@ -24,6 +24,7 @@ D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\TraceCV.csproj.CoreCompile
 D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\TraceCV.MvcApplicationPartsAssemblyInfo.cache
 D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\TraceCV.RazorAssemblyInfo.cache
 D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\TraceCV.RazorAssemblyInfo.cs
+D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\TraceCV.sourcelink.json
 D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\staticwebassets.build.json
 D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\staticwebassets.development.json
 D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\staticwebassets\msbuild.TraceCV.Microsoft.AspNetCore.StaticWebAssets.props

@@ -40,6 +40,50 @@
                         <input type="date" asp-for="DOB" class="form-control" required />
                     </div>
                     <div class="form-group">
+                        <label for="Name">Nationality:</label>
+                        <select asp-for="Nationality" class="form-control" required id="nationalityDropdown">
+                            <!-- Add an empty option for placeholder -->
+                            <option value="" selected> Please Select Nationality</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="Email">Email:</label>
+                        <input asp-for="Email" class="form-control" />
+                    </div>
+                    <!-- Contacts -->
+                    <div class="form-group">
+                        <div id="contactsContainer">
+                            <label for="Contacts[0].PhoneNumber">Phone Number:</label>
+                            <input asp-for="Contacts[0].PhoneNumber" class="form-control" />
+                        </div>
+                        <!-- Other contact fields... -->
+                        <button type="button" id="addContact" class="btn btn-primary">Add Contact</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="experience">Years of Experience:</label>
+                        <input type="number" asp-for="experience" class="form-control" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="Name">Year CV Last Edited:</label>
+                        <input asp-for="lastedit" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="WorkedWith2ML">Empployment Status:</label>
+                        <div class="form-check">
+                    <input type="radio" asp-for="EmploymentStatus" value="Employed" class="form-check-input" id="employed" onclick="CheckEmploymentStatus()" required />
+                            <label class="form-check-label">Employed</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" asp-for="EmploymentStatus" value="SelfEmployed" class="form-check-input" onclick="CheckEmploymentStatus()"  required />
+                            <label class="form-check-label">Self Employed</label>
+                        </div>
+                    </div>
+                    <div class="form-group" id="currentEmployerTextbox">
+                        <label for="Name">Current Employer:</label>
+                        <input asp-for="CurrentEmployer" class="form-control" />
+                    </div>
+                   
+                    <div class="form-group">
                         <label for="Languages[0].Language">Languages:</label>
                         <div id="languagesContainer">
                             <input asp-for="Languages[0].Type" class="form-control" required />
@@ -47,10 +91,7 @@
                         <!-- Other contact fields... -->
                         <button type="button" id="addLanguage" class="btn btn-primary">Add Language</button>
                     </div>
-                    <div class="form-group">
-                        <label for="Name">Current Employer:</label>
-                        <input asp-for="CurrentEmployer" class="form-control" />
-                    </div>
+                    
                     <div class="form-group">
                         <label for="WorkedWith2ML">Ever Worked With 2ML:</label>
                         <div class="form-check">
@@ -75,18 +116,16 @@
                         <option value="Long term basis">Long term basis</option>
                     </select>
                 </div>
+                    
                     <div class="form-group">
-                        <label for="Email">Email:</label>
-                        <input asp-for="Email" class="form-control" />
-                    </div>
-                    <!-- Contacts -->
-                    <div class="form-group">
-                        <div id="contactsContainer">
-                        <label for="Contacts[0].PhoneNumber">Phone Number:</label>
-                            <input asp-for="Contacts[0].PhoneNumber" class="form-control" />
-                        </div>
-                        <!-- Other contact fields... -->
-                        <button type="button" id="addContact" class="btn btn-primary">Add Contact</button>
+                        <label for="Sector">Sector:</label>
+                        <select asp-for="Sector" class="form-control">
+                            <option selected> Please Select Expert's Sector</option>
+                            <option value="Water and Sanitation">Water and Sanitation</option>
+                            <option value="Energy">Energy</option>
+                            <option value="Enviroment">Enviroment</option>
+                            <option value="Governance">Governance</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="Speciality">Area of Speciality:</label>
@@ -101,11 +140,31 @@
                             <option value="GIS">GIS</option>
                             <option value="Policy Regulation & legal">Policy Regulation & legal</option>
                             <option value="PPP (Public Private Partnership)">PPP (Public Private Partnership)</option>
-                            <option value="Sociologist">Sociologist</option>
+                            <option value="Sociologist">Gender and Social Development</option>
                             <option value="Commercial">Commercial</option>
                             <option value="WASH/ Sanitation">WASH/ Sanitation</option>
+                            <option value="Asset Management">Asset Management</option>
+                            <option value="Financial Management">Financial Management</option>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for="OtherKeyExpertise">Other Key Expertise:</label>
+                        <hr class="my-3"> <!-- Add a horizontal line as a divider -->
+                        <select asp-for="OtherKeyExpertise" class="form-control" multiple id="otherKeyExpertiseSelect">
+                            <option selected disabled>Please Select Other Key Expertise</option>
+                            <option value="TrainingAndCapacityBuilding">Training and Capacity Building</option>
+                            <option value="MandE">M&E</option>
+                            <option value="GenderAndSocial">Gender and social sciences</option>
+                            <option value="InstitutionalDevelopment">Institutional Development</option>
+                            <option value="Research">Research</option>
+                            <option value="Audit">Audit</option>
+                            <option value="StrategicPlanning">Strategic Planning</option>
+                            <option value="WaterAndSanitation">Water and sanitation</option>
+                        </select>
+                    </div>
+                    <hr class="my-3"> <!-- Add a horizontal line as a divider -->
+                    <textarea id="selectedOptionsTextarea" class="form-control" readonly></textarea>
+
                     <!-- Educations -->
                     <div id="educationsContainer" class="form-group">
                         <label for="Educations[0].Level">Education Level:</label>
@@ -114,6 +173,15 @@
                             <option value="Bachelors">Bachelors</option>
                             <option value="Masters">Masters</option>
                             <option value="Doctorate">Doctorate</option>
+                        </select>
+                    </div>
+                    <div id="educationsContainer" class="form-group">
+                        <label for="Educations[0].Level">Other Professional Certificates:</label>
+                        <select asp-for="Certificates" class="form-control" multiple>
+                            <option selected disabled> Please Select Level of Educatiin</option>
+                            <option value="Artificial inteligence">Artificial inteligence</option>
+                            <option value="CCNA">CCNA</option>
+                            <option value="CISCO">CISCO</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -133,33 +201,57 @@
    @*  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js" integrity="sha384-i4bhE4ydHVNvIjEjdj1J7Pp/P4PLxIh0DIqPEboujFpYBFeD8M4N00xOnbM86dX0" crossorigin="anonymous"></script> *@
    @*  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgydD0PJR2EEfdhxbnEJsXl3pib4hL/nyJdFfVZxMSa8vF1NnCCnIZDYzX5" crossorigin="anonymous"></script>
     <!-- Your AJAX script here... --> *@
-    @section scripts{
+@section scripts {
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
+
+        function CheckEmploymentStatus() {
+            var employedRadio = document.getElementById('employed');
+            var currentEmployerTextbox = document.getElementById('currentEmployerTextbox');
+
+            if (employedRadio.checked) {
+                currentEmployerTextbox.style.display = 'block';
+            } else {
+                currentEmployerTextbox.style.display = 'none';
+            }
+        }
+
+        CheckEmploymentStatus();
         $(document).ready(function () {
+
+            
+            // Update textarea when options are selected or deselected
+            $("#otherKeyExpertiseSelect").on("change", function () {
+                var selectedOptions = $("#otherKeyExpertiseSelect option:selected").map(function () {
+                    return $(this).text();
+                }).get().join(', ');
+
+                $("#selectedOptionsTextarea").val(selectedOptions);
+            });
             // Add Contact
             $("#addLanguage").click(function () {
                 var index = $("#languagesContainer input").length;
 
                 var newLanguageHtml = `
-                            <div>
-                                                        <label>Language${index + 1}:</label>
-                                <input name="Languages[${index}].Type" class="form-control" />
-                                <!-- Other contact fields... -->
-                            </div>
-                        `;
+                                    <div>
+                                        <label>Language${index + 1}:</label>
+                                        <input name="Languages[${index}].Type" class="form-control" />
+                                        <!-- Other contact fields... -->
+                                    </div>
+                                `;
 
                 $("#languagesContainer").append(newLanguageHtml);
             });
 
-            //add phone contacts
+            // Add phone contacts
             $("#addContact").click(function () {
                 var index2 = $("#contactsContainer input").length;
 
                 var newContactHtml = `
                                     <div>
-                                                                        <label>Phone Number${index2 + 1}:</label>
-                                                <input name="Contacts[${index2}].Language" class="form-control" />
+                                        <label>Phone Number${index2 + 1}:</label>
+                                        <input name="Contacts[${index2}].Language" class="form-control" />
                                         <!-- Other contact fields... -->
                                     </div>
                                 `;
@@ -172,49 +264,67 @@
                 var index = $("#educationsContainer input").length;
 
                 var newEducationHtml = `
-                            <div>
-                                <label>Education Level:</label>
-                                <input name="Educations[${index}].Level" class="form-control" />
-                                <!-- Other education fields... -->
-                            </div>
-                        `;
+                                    <div>
+                                        <label>Education Level:</label>
+                                        <input name="Educations[${index}].Level" class="form-control" />
+                                        <!-- Other education fields... -->
+                                    </div>
+                                `;
 
                 $("#educationsContainer").append(newEducationHtml);
             });
 
-            // AJAX for dynamic additions (if needed)
-            // $("#createExpertForm").submit(function (event) {
-            //     event.preventDefault();
+            // Initialize Select2 for the nationality dropdown
+            $("#nationalityDropdown").select2({
+                placeholder: "Search for a country",
+                allowClear: true,
+                minimumInputLength: 0, // Set the minimum number of characters before showing results
+                ajax: {
+                    delay: 50,
+                    url: 'https://restcountries.com/v2/all',
+                    dataType: 'json',
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data, function (country) {
+                                return {
+                                    id: country.alpha3Code,
+                                    text: country.name
+                                };
+                            })
+                        };
+                    }
+                }
+            });
 
+            // Your existing script for dynamic additions
+            // ...
+
+            // function getCountries(callback) {
             //     $.ajax({
-            //         url: $(this).attr("action"),
-            //         type: $(this).attr("method"),
-            //         data: new FormData(this),
-            //         processData: false,
-            //         contentType: false,
-            //         success: function (response) {
-            //             // Handle success
+            //         // url: 'https://restcountries.com/v3.1/all',
+            //         url: 'https://restcountries.com/v2/all',
+            //         type: 'GET',
+            //         success: function (data) {
+            //             callback(data);
             //         },
             //         error: function (error) {
-            //             // Handle error
+            //             console.error('Error fetching countries:', error);
             //         }
             //     });
-            // });
-            // $("#createExpertForm").submit(function (event) {
-            //     event.preventDefault();
-
-            //     $.ajax({
-            //         url: $(this).attr("action"),
-            //         type: $(this).attr("method"),
-            //         data: $(this).serialize(),
-            //         success: function (response) {
-            //             // Handle success, e.g., redirect or show a success message
-            //         },
-            //         error: function (error) {
-            //             // Handle error, e.g., display an error message
-            //         }
-            //     });
-            // });
+            // }
+            function getCountries(callback) {
+                $.ajax({
+                    url: 'https://restcountries.com/v2/all',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        callback(data);
+                    },
+                    error: function (error) {
+                        console.error('Error fetching countries:', error);
+                    }
+                });
+            }
         });
     </script>
-    }
+}

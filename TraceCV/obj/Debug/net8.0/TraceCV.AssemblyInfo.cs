@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TraceCV")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f29c10c13b22ecb6e2d0a9f68b23910d6ee6168a")]
 [assembly: System.Reflection.AssemblyProductAttribute("TraceCV")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TraceCV")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "LGfCSldarCMJneeVf2A2rTEhHzib0NZ4Qhv46S+A68E=",
+  "Hash": "FGFdiT2YbfEGP0d9pgZx5KKQHtrZO/ZrINiNvV5Yd9w=",
   "Source": "TraceCV",
   "BasePath": "_content/TraceCV",
   "Mode": "Default",
@@ -72,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "D:\\working directory\\TraceCV\\TraceCV\\wwwroot\\cvs\\9cc48082-0843-4cf4-b085-adef1f0ace7f-TRACECORP SOLUTIONS COMPANY PROFILE.pdf",
+      "SourceId": "TraceCV",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\working directory\\TraceCV\\TraceCV\\wwwroot\\",
+      "BasePath": "_content/TraceCV",
+      "RelativePath": "cvs/9cc48082-0843-4cf4-b085-adef1f0ace7f-TRACECORP SOLUTIONS COMPANY PROFILE.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\cvs\\9cc48082-0843-4cf4-b085-adef1f0ace7f-TRACECORP SOLUTIONS COMPANY PROFILE.pdf"
     },
     {
       "Identity": "D:\\working directory\\TraceCV\\TraceCV\\wwwroot\\cvs\\c8bb3934-61d7-438c-9a3a-f1fa4b45ef63-Archievements For the week 8th Jan - 12 Jan 2023.docx",

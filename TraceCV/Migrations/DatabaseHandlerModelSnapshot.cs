@@ -69,7 +69,6 @@ namespace TraceCV.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("CurrentEmployer")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("CvFilePath")
@@ -84,11 +83,23 @@ namespace TraceCV.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("EmploymentStatus")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Gender")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Nationality")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Sector")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -98,6 +109,14 @@ namespace TraceCV.Migrations
 
                     b.Property<bool>("WorkedWith2ML")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("experience")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("lastedit")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
