@@ -1,0 +1,12 @@
+D:\working directory\TraceCV\TraceCV\obj\Release\net8.0\PubTmp\Out\TraceCV.exe
+D:\working directory\TraceCV\TraceCV\obj\Release\net8.0\PubTmp\Out\appsettings.Development.json
+D:\working directory\TraceCV\TraceCV\obj\Release\net8.0\PubTmp\Out\appsettings.json
+D:\working directory\TraceCV\TraceCV\obj\Release\net8.0\PubTmp\Out\TraceCV.dll
+D:\working directory\TraceCV\TraceCV\obj\Release\net8.0\PubTmp\Out\TraceCV.runtimeconfig.json
+D:\working directory\TraceCV\TraceCV\obj\Release\net8.0\PubTmp\Out\TraceCV.pdb
+D:\working directory\TraceCV\TraceCV\obj\Release\net8.0\PubTmp\Out\Microsoft.EntityFrameworkCore.dll
+D:\working directory\TraceCV\TraceCV\obj\Release\net8.0\PubTmp\Out\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\working directory\TraceCV\TraceCV\obj\Release\net8.0\PubTmp\Out\Microsoft.EntityFrameworkCore.Relational.dll
+D:\working directory\TraceCV\TraceCV\obj\Release\net8.0\PubTmp\Out\MySqlConnector.dll
+D:\working directory\TraceCV\TraceCV\obj\Release\net8.0\PubTmp\Out\Pomelo.EntityFrameworkCore.MySql.dll
+D:\working directory\TraceCV\TraceCV\obj\Release\net8.0\PubTmp\Out\TraceCV.deps.json

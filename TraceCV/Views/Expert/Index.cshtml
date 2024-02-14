@@ -30,7 +30,7 @@
                     <div class="form-group">
                         <label for="Gender">Gender:</label>
                         <select asp-for="Gender" class="form-control" required>
-                            <option selected> Please Select Gender</option>
+                            <option selected disabled> Please Select Gender</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select>
@@ -109,7 +109,7 @@
                 <div class="form-group">
                     <label for="Name">Category:</label>
                     <select asp-for="Category" class="form-control">
-                        <option selected> Please Select Category</option>
+                        <option selected disabled> Please Select Category</option>
                         <option value="Trainee">Trainee</option>
                         <option value="FullTime Staff">FullTime Staff</option>
                         <option value="Short term basis associate">Short term basis associate</option>
@@ -120,17 +120,18 @@
                     <div class="form-group">
                         <label for="Sector">Sector:</label>
                         <select asp-for="Sector" class="form-control">
-                            <option selected> Please Select Expert's Sector</option>
+                            <option selected disabled> Please Select Expert's Sector</option>
                             <option value="Water and Sanitation">Water and Sanitation</option>
                             <option value="Energy">Energy</option>
                             <option value="Enviroment">Enviroment</option>
                             <option value="Governance">Governance</option>
+                            <option value="Technology">Tecnology</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="Speciality">Area of Speciality:</label>
                         <select asp-for="Speciality" class="form-control">
-                            <option selected> Please Select Expert's Speciality</option>
+                            <option selected disabled>Expert's Speciality</option>
                             <option value="ICT">ICT</option>
                             <option value="Economist">Economist</option>
                             <option value="Engineering">Engineering</option>
@@ -151,7 +152,7 @@
                         <label for="OtherKeyExpertise">Other Key Expertise:</label>
                         <hr class="my-3"> <!-- Add a horizontal line as a divider -->
                         <select asp-for="OtherKeyExpertise" class="form-control" multiple id="otherKeyExpertiseSelect">
-                            <option selected disabled>Please Select Other Key Expertise</option>
+                            <option selected disabled>Other Key Expertise</option>
                             <option value="TrainingAndCapacityBuilding">Training and Capacity Building</option>
                             <option value="MandE">M&E</option>
                             <option value="GenderAndSocial">Gender and social sciences</option>
@@ -169,10 +170,11 @@
                     <div id="educationsContainer" class="form-group">
                         <label for="Educations[0].Level">Education Level:</label>
                         <select asp-for="Educations[0].Level" class="form-control">
-                            <option selected> Please Select Level of Educatiin</option>
+                            <option selected> Please Select Level of Education</option>
                             <option value="Bachelors">Bachelors</option>
                             <option value="Masters">Masters</option>
-                            <option value="Doctorate">Doctorate</option>
+                            <option value="MBA">MBA</option>
+                            <option value="Ph.D">Ph.D</option>
                         </select>
                     </div>
                     <div id="educationsContainer" class="form-group">
@@ -287,7 +289,7 @@
                         return {
                             results: $.map(data, function (country) {
                                 return {
-                                    id: country.alpha3Code,
+                                    id: country.name,
                                     text: country.name
                                 };
                             })

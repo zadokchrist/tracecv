@@ -25,10 +25,10 @@ namespace TraceCV.Models
         public string experience { get; set; }
         public string lastedit { get; set; }
         [NotMapped]
-        public List<string> OtherKeyExpertise { get; set; }
+        public List<string>? OtherKeyExpertise { get; set; }
 
         [NotMapped]
-        public List<Certificate> Certificates { get; set; }
+        public List<Certificate>? Certificates { get; set; }
 
         public List<Language> Languages { get; set; }
 

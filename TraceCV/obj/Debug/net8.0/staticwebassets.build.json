@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "FGFdiT2YbfEGP0d9pgZx5KKQHtrZO/ZrINiNvV5Yd9w=",
+  "Hash": "W+SMD/d4uMpU6L0wKonO0/P8l29i13/WvgA3VU64WHE=",
   "Source": "TraceCV",
   "BasePath": "_content/TraceCV",
   "Mode": "Default",
@@ -129,6 +129,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\cvs\\cdfeec08-f2ab-4c56-986e-a5d14fc70153-Archievements For the week 8th Jan - 12 Jan 2023.docx"
+    },
+    {
+      "Identity": "D:\\working directory\\TraceCV\\TraceCV\\wwwroot\\cvs\\fe6b57db-6b29-4d05-ae49-89392f482a43-Archievements For the week 8th Jan - 12 Jan 2023.docx",
+      "SourceId": "TraceCV",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\working directory\\TraceCV\\TraceCV\\wwwroot\\",
+      "BasePath": "_content/TraceCV",
+      "RelativePath": "cvs/fe6b57db-6b29-4d05-ae49-89392f482a43-Archievements For the week 8th Jan - 12 Jan 2023.docx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\cvs\\fe6b57db-6b29-4d05-ae49-89392f482a43-Archievements For the week 8th Jan - 12 Jan 2023.docx"
     },
     {
       "Identity": "D:\\working directory\\TraceCV\\TraceCV\\wwwroot\\favicon.ico",

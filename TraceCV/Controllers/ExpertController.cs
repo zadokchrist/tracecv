@@ -23,8 +23,6 @@ namespace TraceCV.Controllers
             return View();
         }
 
-        public IActionResult TestView() { return View(); }
-
         [HttpPost]
         public async Task<IActionResult> Index(Expert expert) 
         {
@@ -71,11 +69,44 @@ namespace TraceCV.Controllers
             return View();
         }
 
-        public async Task<IActionResult> ListOfExperts() 
+        public async Task<IActionResult> ListOfExperts(string name, string nationality, string keysector,string gender,string experience ) 
         {
-            var experts = _databaseHandler.Experts.ToList();
-            return View(experts);
+            try
+            {
+                var experts = _databaseHandler.Experts.AsQueryable();
+                if (!string.IsNullOrEmpty(name))
+                {
+                    experts = experts.Where(e => e.Name.Contains(name));
+                }
+
+                if (!string.IsNullOrEmpty(nationality))
+                {
+                    experts = experts.Where(e => e.Nationality.Contains(nationality));
+                }
+
+                if (!string.IsNullOrEmpty(gender))
+                {
+                    experts = experts.Where(e => e.Gender.Contains(gender));
+                }
+
+                if (!string.IsNullOrEmpty(experience))
+                {
+                    experts = experts.Where(e => int.Parse(e.experience) >= int.Parse(experience));
+                }
+
+
+                var filteredexperts = experts.ToList();
+                return View(filteredexperts);
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = $"An error occurred while retrieving experts. Error :{ex.Message}";
+                return View();
+            }
+            
+            
         }
+
 
         public IActionResult Edit(int id)
         {
@@ -131,7 +162,7 @@ namespace TraceCV.Controllers
             _databaseHandler.Experts.Remove(expert);
             await _databaseHandler.SaveChangesAsync();
 
-            return RedirectToAction(nameof(List<Expert>));
+            return RedirectToAction(nameof(ListOfExperts));
         }
 
 
