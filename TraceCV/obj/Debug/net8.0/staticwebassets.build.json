@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "W+SMD/d4uMpU6L0wKonO0/P8l29i13/WvgA3VU64WHE=",
+  "Hash": "G56IrGa94HaI8cZsjN7QJq0sJNL0ExeXhqjYco6eaZ4=",
   "Source": "TraceCV",
   "BasePath": "_content/TraceCV",
   "Mode": "Default",
@@ -74,6 +74,25 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
+      "Identity": "D:\\working directory\\TraceCV\\TraceCV\\wwwroot\\cvs\\917aa604-2abd-428c-a64a-18b7003af6fc-Day's_details_month_2_19_2024.xlsx",
+      "SourceId": "TraceCV",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\working directory\\TraceCV\\TraceCV\\wwwroot\\",
+      "BasePath": "_content/TraceCV",
+      "RelativePath": "cvs/917aa604-2abd-428c-a64a-18b7003af6fc-Day's_details_month_2_19_2024.xlsx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\cvs\\917aa604-2abd-428c-a64a-18b7003af6fc-Day's_details_month_2_19_2024.xlsx"
+    },
+    {
       "Identity": "D:\\working directory\\TraceCV\\TraceCV\\wwwroot\\cvs\\9cc48082-0843-4cf4-b085-adef1f0ace7f-TRACECORP SOLUTIONS COMPANY PROFILE.pdf",
       "SourceId": "TraceCV",
       "SourceType": "Discovered",
@@ -91,6 +110,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\cvs\\9cc48082-0843-4cf4-b085-adef1f0ace7f-TRACECORP SOLUTIONS COMPANY PROFILE.pdf"
+    },
+    {
+      "Identity": "D:\\working directory\\TraceCV\\TraceCV\\wwwroot\\cvs\\a1b4e1df-35c5-453f-9e90-e193ad70ca06-Archievements For the week 5th February - 9th February 2024.docx",
+      "SourceId": "TraceCV",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\working directory\\TraceCV\\TraceCV\\wwwroot\\",
+      "BasePath": "_content/TraceCV",
+      "RelativePath": "cvs/a1b4e1df-35c5-453f-9e90-e193ad70ca06-Archievements For the week 5th February - 9th February 2024.docx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\cvs\\a1b4e1df-35c5-453f-9e90-e193ad70ca06-Archievements For the week 5th February - 9th February 2024.docx"
     },
     {
       "Identity": "D:\\working directory\\TraceCV\\TraceCV\\wwwroot\\cvs\\c8bb3934-61d7-438c-9a3a-f1fa4b45ef63-Archievements For the week 8th Jan - 12 Jan 2023.docx",

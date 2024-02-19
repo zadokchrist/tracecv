@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "629MJeEUgE28IRz39XuDX0EJctRIJdn+qC+KkdLUMH0=",
+  "Hash": "fW8HdFRmXEaSwy+jYlRMveLAcGpR0AQ8G/O8kMAskeY=",
   "Source": "TraceCV",
   "BasePath": "_content/TraceCV",
   "Mode": "Default",
@@ -72,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "D:\\working directory\\TraceCV\\TraceCV\\wwwroot\\cvs\\917aa604-2abd-428c-a64a-18b7003af6fc-Day's_details_month_2_19_2024.xlsx",
+      "SourceId": "TraceCV",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\working directory\\TraceCV\\TraceCV\\wwwroot\\",
+      "BasePath": "_content/TraceCV",
+      "RelativePath": "cvs/917aa604-2abd-428c-a64a-18b7003af6fc-Day's_details_month_2_19_2024.xlsx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\cvs\\917aa604-2abd-428c-a64a-18b7003af6fc-Day's_details_month_2_19_2024.xlsx"
     },
     {
       "Identity": "D:\\working directory\\TraceCV\\TraceCV\\wwwroot\\cvs\\9cc48082-0843-4cf4-b085-adef1f0ace7f-TRACECORP SOLUTIONS COMPANY PROFILE.pdf",

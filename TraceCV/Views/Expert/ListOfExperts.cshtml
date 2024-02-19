@@ -130,7 +130,15 @@
                         <td>@expert.Email</td>
                         <td>@expert.Gender</td>
                         <td>@expert.Nationality</td>
-                        <td>@expert.Educations</td>
+                        @if (expert.Educations != null && expert.Educations.Count > 0)
+                        {
+                            <td>@expert.Educations[0].Level</td>
+                        }
+                        else
+                        {
+                            <td> N/A</td>
+                        }
+                        
                         <td>@expert.experience</td>
                         <td>@expert.WorkedWith2ML</td>
                         <td>

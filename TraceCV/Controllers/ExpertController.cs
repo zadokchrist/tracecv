@@ -73,7 +73,7 @@ namespace TraceCV.Controllers
         {
             try
             {
-                var experts = _databaseHandler.Experts.AsQueryable();
+                var experts = _databaseHandler.Experts.Include(e => e.Educations).AsQueryable();
                 if (!string.IsNullOrEmpty(name))
                 {
                     experts = experts.Where(e => e.Name.Contains(name));
