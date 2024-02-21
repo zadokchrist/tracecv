@@ -35,9 +35,9 @@ D:\working directory\TraceCV\TraceCV\obj\Release\net8.0\staticwebassets.pack.jso
 D:\working directory\TraceCV\TraceCV\obj\Release\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 D:\working directory\TraceCV\TraceCV\obj\Release\net8.0\scopedcss\bundle\TraceCV.styles.css
 D:\working directory\TraceCV\TraceCV\obj\Release\net8.0\scopedcss\projectbundle\TraceCV.bundle.scp.css
-D:\working directory\TraceCV\TraceCV\obj\Release\net8.0\TraceCV.csproj.CopyComplete
 D:\working directory\TraceCV\TraceCV\obj\Release\net8.0\TraceCV.dll
 D:\working directory\TraceCV\TraceCV\obj\Release\net8.0\refint\TraceCV.dll
 D:\working directory\TraceCV\TraceCV\obj\Release\net8.0\TraceCV.pdb
 D:\working directory\TraceCV\TraceCV\obj\Release\net8.0\TraceCV.genruntimeconfig.cache
 D:\working directory\TraceCV\TraceCV\obj\Release\net8.0\ref\TraceCV.dll
+D:\working directory\TraceCV\TraceCV\obj\Release\net8.0\TraceCV.csproj.Up2Date

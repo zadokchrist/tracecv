@@ -13,6 +13,8 @@ namespace TraceCV.Data
         public DbSet<Education> Educations { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Language> Languages { get; set; }
+        public DbSet<OtherKeyExpertise> OtherKeyExpertises { get; set; } // Add this
+        public DbSet<Certificate> Certificates { get; set; } // Add this
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Add any additional configurations if needed

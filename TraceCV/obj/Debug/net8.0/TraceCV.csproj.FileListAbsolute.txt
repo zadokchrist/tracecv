@@ -1,3 +1,12 @@
+D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\TraceCV.csproj.AssemblyReference.cache
+D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\TraceCV.GeneratedMSBuildEditorConfig.editorconfig
+D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\TraceCV.AssemblyInfoInputs.cache
+D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\TraceCV.AssemblyInfo.cs
+D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\TraceCV.csproj.CoreCompileInputs.cache
+D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\TraceCV.MvcApplicationPartsAssemblyInfo.cache
+D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\TraceCV.RazorAssemblyInfo.cache
+D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\TraceCV.RazorAssemblyInfo.cs
+D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\TraceCV.sourcelink.json
 D:\working directory\TraceCV\TraceCV\bin\Debug\net8.0\appsettings.Development.json
 D:\working directory\TraceCV\TraceCV\bin\Debug\net8.0\appsettings.json
 D:\working directory\TraceCV\TraceCV\bin\Debug\net8.0\TraceCV.staticwebassets.runtime.json
@@ -16,15 +25,6 @@ D:\working directory\TraceCV\TraceCV\bin\Debug\net8.0\Mono.TextTemplating.dll
 D:\working directory\TraceCV\TraceCV\bin\Debug\net8.0\MySqlConnector.dll
 D:\working directory\TraceCV\TraceCV\bin\Debug\net8.0\Pomelo.EntityFrameworkCore.MySql.dll
 D:\working directory\TraceCV\TraceCV\bin\Debug\net8.0\System.CodeDom.dll
-D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\TraceCV.csproj.AssemblyReference.cache
-D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\TraceCV.GeneratedMSBuildEditorConfig.editorconfig
-D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\TraceCV.AssemblyInfoInputs.cache
-D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\TraceCV.AssemblyInfo.cs
-D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\TraceCV.csproj.CoreCompileInputs.cache
-D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\TraceCV.MvcApplicationPartsAssemblyInfo.cache
-D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\TraceCV.RazorAssemblyInfo.cache
-D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\TraceCV.RazorAssemblyInfo.cs
-D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\TraceCV.sourcelink.json
 D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\staticwebassets.build.json
 D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\staticwebassets.development.json
 D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\staticwebassets\msbuild.TraceCV.Microsoft.AspNetCore.StaticWebAssets.props
@@ -35,7 +35,7 @@ D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\staticwebassets.pack.json
 D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\scopedcss\bundle\TraceCV.styles.css
 D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\scopedcss\projectbundle\TraceCV.bundle.scp.css
-D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\TraceCV.csproj.CopyComplete
+D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\TraceCV.csproj.Up2Date
 D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\TraceCV.dll
 D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\refint\TraceCV.dll
 D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\TraceCV.pdb

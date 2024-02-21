@@ -18,6 +18,26 @@ namespace TraceCV.Migrations
                 .HasAnnotation("ProductVersion", "7.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("TraceCV.Models.Certificate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("ExpertId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExpertId");
+
+                    b.ToTable("Certificates");
+                });
+
             modelBuilder.Entity("TraceCV.Models.Contact", b =>
                 {
                     b.Property<int>("Id")
@@ -72,7 +92,6 @@ namespace TraceCV.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("CvFilePath")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("DOB")
@@ -143,6 +162,35 @@ namespace TraceCV.Migrations
                     b.ToTable("Languages");
                 });
 
+            modelBuilder.Entity("TraceCV.Models.OtherKeyExpertise", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("ExpertId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Expertise")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExpertId");
+
+                    b.ToTable("OtherKeyExpertises");
+                });
+
+            modelBuilder.Entity("TraceCV.Models.Certificate", b =>
+                {
+                    b.HasOne("TraceCV.Models.Expert", null)
+                        .WithMany("Certificates")
+                        .HasForeignKey("ExpertId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("TraceCV.Models.Contact", b =>
                 {
                     b.HasOne("TraceCV.Models.Expert", null)
@@ -170,13 +218,26 @@ namespace TraceCV.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("TraceCV.Models.OtherKeyExpertise", b =>
+                {
+                    b.HasOne("TraceCV.Models.Expert", null)
+                        .WithMany("OtherKeyExpertises")
+                        .HasForeignKey("ExpertId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("TraceCV.Models.Expert", b =>
                 {
+                    b.Navigation("Certificates");
+
                     b.Navigation("Contacts");
 
                     b.Navigation("Educations");
 
                     b.Navigation("Languages");
+
+                    b.Navigation("OtherKeyExpertises");
                 });
 #pragma warning restore 612, 618
         }

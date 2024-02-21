@@ -26,7 +26,6 @@
             <div class="form-group">
                 <label for="Name">Nationality:</label>
                 <select name="nationality" class="form-control" id="nationalityDropdown">
-                    <option value="" selected> Please Select Nationality</option>
                 </select>
             </div>
         </div>
@@ -34,7 +33,7 @@
             <div class="form-group">
                 <label for="Name">Key Sector:</label>
                 <select name="keysector" class="form-control">
-                    <option selected> Expert's Sector</option>
+                    <option selected value=""> --Select--</option>
                     <option value="Water and Sanitation">Water and Sanitation</option>
                     <option value="Energy">Energy</option>
                     <option value="Enviroment">Enviroment</option>
@@ -46,7 +45,7 @@
             <div class="form-group">
                 <label for="Name">Area of Speciality:</label>
                 <select name="area_of_speciality" class="form-control">
-                    <option selected> Expert's Speciality</option>
+                    <option selected> --Select--</option>
                     <option value="ICT">ICT</option>
                     <option value="Economist">Economist</option>
                     <option value="Engineering">Engineering</option>
@@ -108,8 +107,8 @@
             <th>Nationality</th>
             <th>Education Level</th>
             <th>Experience</th>
-            <th>Worked with 2ml</th>
-            <!-- Add other columns as needed -->
+            <th>Key Sector</th>
+            <th>Area Of Speciality</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -140,7 +139,8 @@
                         }
                         
                         <td>@expert.experience</td>
-                        <td>@expert.WorkedWith2ML</td>
+                        <td>@expert.Sector</td>
+                        <td>@expert.Speciality</td>
                         <td>
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="actionsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

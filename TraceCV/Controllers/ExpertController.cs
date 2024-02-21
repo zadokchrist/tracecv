@@ -28,31 +28,48 @@ namespace TraceCV.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
+                if (string.IsNullOrEmpty(expert.Nationality))
                 {
-                    //handle file upload
-                    if (expert.CvFile != null && expert.CvFile.Length > 0)
-                    {
-                        var cvFileName = $"{Guid.NewGuid().ToString()}-{Path.GetFileName(expert.CvFile.FileName)}";
-                        var cvFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/cvs", cvFileName);
-                        using (var stream = new FileStream(cvFilePath, FileMode.Create))
-                        {
-                            await expert.CvFile.CopyToAsync(stream);
-                        }
-
-                        // Save the file path to the user model
-                        expert.CvFilePath = $"/cvs/{cvFileName}";
-                    }
-                    // Save the user data to the database
-                    _databaseHandler.Experts.Add(expert);
-                    await _databaseHandler.SaveChangesAsync();
-                    // Provide a success message
-                    TempData["SuccessMessage"] = "Expert saved successfully.";
+                    TempData["ErrorMessage"] = "Please select Nationality of the expert";
+                }
+                else if (expert.CvFile == null)
+                {
+                    TempData["ErrorMessage"] = "Please upload Expert Cv file";
+                }
+                else if (string.IsNullOrEmpty(expert.Speciality))
+                {
+                    TempData["ErrorMessage"] = "Please select area of speciality";
                 }
                 else
                 {
-                    LogValidationErrors();
+                    if (ModelState.IsValid)
+                    {
+
+                        //handle file upload
+                        if (expert.CvFile != null && expert.CvFile.Length > 0)
+                        {
+                            var cvFileName = $"{Guid.NewGuid().ToString()}-{Path.GetFileName(expert.CvFile.FileName)}";
+                            var cvFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/cvs", cvFileName);
+                            using (var stream = new FileStream(cvFilePath, FileMode.Create))
+                            {
+                                await expert.CvFile.CopyToAsync(stream);
+                            }
+
+                            // Save the file path to the user model
+                            expert.CvFilePath = $"/cvs/{cvFileName}";
+                        }
+                        // Save the user data to the database
+                        _databaseHandler.Experts.Add(expert);
+                        await _databaseHandler.SaveChangesAsync();
+                        // Provide a success message
+                        TempData["SuccessMessage"] = "Expert saved successfully.";
+                    }
+                    else
+                    {
+                        LogValidationErrors();
+                    }
                 }
+                    
             }
             catch (Exception ex)
             {
@@ -89,9 +106,14 @@ namespace TraceCV.Controllers
                     experts = experts.Where(e => e.Gender.Contains(gender));
                 }
 
-                if (!string.IsNullOrEmpty(experience))
+                if (!string.IsNullOrEmpty(keysector)) 
                 {
-                    experts = experts.Where(e => int.Parse(e.experience) >= int.Parse(experience));
+                    experts = experts.Where(e => e.Sector.Contains(keysector));
+                }
+
+                if (!string.IsNullOrEmpty(experience) && int.TryParse(experience, out int minExperience))
+                {
+                    experts = experts.Where(e => Convert.ToInt32(e.experience) >= minExperience);
                 }
 
 
@@ -112,6 +134,7 @@ namespace TraceCV.Controllers
         {
             var expert = _databaseHandler.Experts
                 .Include(e => e.Languages)
+                .Include(e=>e.Educations)
                 .Include(e => e.Contacts)
                 .FirstOrDefault(e => e.Id == id); ;
             if (expert == null)
@@ -130,21 +153,65 @@ namespace TraceCV.Controllers
             {
                 return NotFound();
             }
-
-            if (ModelState.IsValid)
+            if (string.IsNullOrEmpty(expert.Nationality))
             {
-                try
+                // Provide an error message to the user
+                TempData["ErrorMessage"] = "Nationality of expert not selected";
+            }
+            else if (expert.CvFile==null)
+            {
+                TempData["ErrorMessage"] = "Please Upload updated cv of the expert";
+            }
+            else
+            {
+                if (ModelState.IsValid)
                 {
-                    // Update the expert data
-                    _databaseHandler.Entry(expert).State = EntityState.Modified;
-                    await _databaseHandler.SaveChangesAsync();
+                    try
+                    {
+                        // Fetch the existing expert data including education details
+                        var existingExpert = await _databaseHandler.Experts
+                            .Include(e => e.Educations) // Include education details
+                            .FirstOrDefaultAsync(e => e.Id == id);
+                        if (existingExpert != null)
+                        {
+                            // Update the non-collection properties of the existing expert
+                            _databaseHandler.Entry(existingExpert).CurrentValues.SetValues(expert);
+
+                            // Update education details
+                            foreach (var education in expert.Educations)
+                            {
+                                var existingEducation = existingExpert.Educations.FirstOrDefault(e => e.ExpertId == education.ExpertId);
+                                if (existingEducation != null)
+                                {
+                                    // Update education level
+                                    existingEducation.Level = education.Level;
+                                }
+                                else
+                                {
+                                    // Add new education
+                                    existingExpert.Educations.Add(education);
+                                }
+                            }
+
+                            // Save changes to the database
+                            await _databaseHandler.SaveChangesAsync();
+
+                            TempData["SuccessMessage"] = "Expert Details have been updated successfully.";
+                        }
+                        else
+                        {
+                            TempData["ErrorMessage"] = "Expert not found.";
+                        }
+                    }
+                    catch (DbUpdateConcurrencyException ex)
+                    {
+                        // Handle concurrency exception if needed
+                        TempData["ErrorMessage"] = $"Error Occurred : {ex.InnerException}";
+                    }
+                    TempData["SuccessMessage"] = "Expert Details have been updated successfully.";
+                    //return RedirectToAction(nameof(ListOfExperts));
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    // Handle concurrency exception if needed
-                    throw;
-                }
-                return RedirectToAction(nameof(List<Expert>));
+
             }
 
             return View(expert);
