@@ -86,7 +86,7 @@ namespace TraceCV.Controllers
             return View();
         }
 
-        public async Task<IActionResult> ListOfExperts(string name, string nationality, string keysector,string gender,string experience ) 
+        public async Task<IActionResult> ListOfExperts(string name, string nationality, string keysector,string gender,string experience,string levelofeducation,string area_of_speciality) 
         {
             try
             {
@@ -116,6 +116,17 @@ namespace TraceCV.Controllers
                     experts = experts.Where(e => Convert.ToInt32(e.experience) >= minExperience);
                 }
 
+                if (!string.IsNullOrEmpty(levelofeducation))
+                {
+                    //experts = experts.Where(e => e.Educations[0].Level.Contains(levelofeducation));
+                    experts = experts.Where(e => e.Educations.Any(edu => edu.Level.Contains(levelofeducation)));
+                }
+
+                if (!string.IsNullOrEmpty(area_of_speciality))
+                {
+                    experts = experts.Where(e => e.Speciality.Contains(area_of_speciality));
+                }
+
 
                 var filteredexperts = experts.ToList();
                 return View(filteredexperts);
@@ -136,6 +147,7 @@ namespace TraceCV.Controllers
                 .Include(e => e.Languages)
                 .Include(e=>e.Educations)
                 .Include(e => e.Contacts)
+                .Include(e => e.Affiliations)
                 .FirstOrDefault(e => e.Id == id); ;
             if (expert == null)
             {
@@ -177,22 +189,7 @@ namespace TraceCV.Controllers
                             // Update the non-collection properties of the existing expert
                             _databaseHandler.Entry(existingExpert).CurrentValues.SetValues(expert);
 
-                            // Update education details
-                            foreach (var education in expert.Educations)
-                            {
-                                var existingEducation = existingExpert.Educations.FirstOrDefault(e => e.ExpertId == education.ExpertId);
-                                if (existingEducation != null)
-                                {
-                                    // Update education level
-                                    existingEducation.Level = education.Level;
-                                }
-                                else
-                                {
-                                    // Add new education
-                                    existingExpert.Educations.Add(education);
-                                }
-                            }
-
+                            existingExpert.Educations[0].Level = expert.Educations[0].Level;
                             // Save changes to the database
                             await _databaseHandler.SaveChangesAsync();
 

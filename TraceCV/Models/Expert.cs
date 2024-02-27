@@ -25,10 +25,12 @@ namespace TraceCV.Models
         public string experience { get; set; }
         public string lastedit { get; set; }
 
-        public List<OtherKeyExpertise> OtherKeyExpertises { get; set; }
-        public List<Certificate> Certificates { get; set; }
+        public List<OtherKeyExpertise>? OtherKeyExpertises { get; set; }
+        public List<Certificate>? Certificates { get; set; }
 
         public List<Language> Languages { get; set; }
+
+        public List<Affiliation>? Affiliations { get; set; }
 
         public string Sector {  get; set; }
         public string EmploymentStatus { get; set; }

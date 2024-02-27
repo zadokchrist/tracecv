@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mIszVXiRElqoChZ0CEV0Nc18uO7sGEzW4tCOFqAKDHA=",
+  "Hash": "Hit3qrL7zWjRKWwtskyGdxjBkDniZ5NM7CEakvxai40=",
   "Source": "TraceCV",
   "BasePath": "_content/TraceCV",
   "Mode": "Default",
@@ -74,6 +74,25 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
+      "Identity": "D:\\working directory\\TraceCV\\TraceCV\\wwwroot\\cvs\\72362762-c0ac-446b-adf2-ee4a17bb7f1c-Archievements For the week 8th Jan - 12 Jan 2023.docx",
+      "SourceId": "TraceCV",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\working directory\\TraceCV\\TraceCV\\wwwroot\\",
+      "BasePath": "_content/TraceCV",
+      "RelativePath": "cvs/72362762-c0ac-446b-adf2-ee4a17bb7f1c-Archievements For the week 8th Jan - 12 Jan 2023.docx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\cvs\\72362762-c0ac-446b-adf2-ee4a17bb7f1c-Archievements For the week 8th Jan - 12 Jan 2023.docx"
+    },
+    {
       "Identity": "D:\\working directory\\TraceCV\\TraceCV\\wwwroot\\cvs\\917aa604-2abd-428c-a64a-18b7003af6fc-Day's_details_month_2_19_2024.xlsx",
       "SourceId": "TraceCV",
       "SourceType": "Discovered",
@@ -110,6 +129,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\cvs\\95e2fec5-fa26-4157-9a7c-b6c5ebb8bc29-Archievements For the week 5th February - 9th February 2024.docx"
+    },
+    {
+      "Identity": "D:\\working directory\\TraceCV\\TraceCV\\wwwroot\\cvs\\97b9239c-fcef-45de-9b8a-b9584bdb7dd6-Archievements For the week 5th February - 9th February 2024.docx",
+      "SourceId": "TraceCV",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\working directory\\TraceCV\\TraceCV\\wwwroot\\",
+      "BasePath": "_content/TraceCV",
+      "RelativePath": "cvs/97b9239c-fcef-45de-9b8a-b9584bdb7dd6-Archievements For the week 5th February - 9th February 2024.docx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\cvs\\97b9239c-fcef-45de-9b8a-b9584bdb7dd6-Archievements For the week 5th February - 9th February 2024.docx"
     },
     {
       "Identity": "D:\\working directory\\TraceCV\\TraceCV\\wwwroot\\cvs\\9cc48082-0843-4cf4-b085-adef1f0ace7f-TRACECORP SOLUTIONS COMPANY PROFILE.pdf",
@@ -262,6 +300,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\cvs\\dfacfc59-d2f4-4cd2-9ebf-b91083e513cc-100 day dreams.docx"
+    },
+    {
+      "Identity": "D:\\working directory\\TraceCV\\TraceCV\\wwwroot\\cvs\\f193febd-da4d-41e6-ba12-9c33ee7b934f-Archievements For the week 5th February - 9th February 2024.docx",
+      "SourceId": "TraceCV",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\working directory\\TraceCV\\TraceCV\\wwwroot\\",
+      "BasePath": "_content/TraceCV",
+      "RelativePath": "cvs/f193febd-da4d-41e6-ba12-9c33ee7b934f-Archievements For the week 5th February - 9th February 2024.docx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\cvs\\f193febd-da4d-41e6-ba12-9c33ee7b934f-Archievements For the week 5th February - 9th February 2024.docx"
     },
     {
       "Identity": "D:\\working directory\\TraceCV\\TraceCV\\wwwroot\\cvs\\fe6b57db-6b29-4d05-ae49-89392f482a43-Archievements For the week 8th Jan - 12 Jan 2023.docx",

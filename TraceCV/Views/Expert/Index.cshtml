@@ -123,7 +123,7 @@
                             <option selected disabled> Please Select Expert's Sector</option>
                             <option value="Water and Sanitation">Water and Sanitation</option>
                             <option value="Energy">Energy</option>
-                            <option value="Enviroment">Enviroment</option>
+                            <option value="Environment">Environment</option>
                             <option value="Governance">Governance</option>
                             <option value="Technology">Technology</option>
                         </select>
@@ -177,6 +177,7 @@
                             <option value="Ph.D">Ph.D</option>
                         </select>
                     </div>
+
                     <div id="educationsContainer" class="form-group">
                         <label for="Educations[0].Level">Other Professional Certificates:</label>
                         <select asp-for="Certificates" class="form-control" multiple>
@@ -184,7 +185,48 @@
                             <option value="Artificial inteligence">Artificial inteligence</option>
                             <option value="CCNA">CCNA</option>
                             <option value="CISCO">CISCO</option>
+                            <option value="Executive Leadership Certificate">Executive Leadership Certificate</option>
+                            <option value="Project Management Professional (PMP)">Project Management Professional (PMP)</option>
+                            <option value="PRINCE2 Certification">PRINCE2 Certification</option>
+                            <option value="Certified Public Accountant (CPA)">Certified Public Accountant (CPA)</option>
+                            <option value="Certified Information Systems Auditor (CISA)">Certified Information Systems Auditor (CISA)</option>
+                            <option value="Chartered Institute of Procurement & Supply (CIPS)">Chartered Institute of Procurement & Supply (CIPS)</option>
+                            <option value="Certified Supply Chain Professional (CSCP)">Certified Supply Chain Professional (CSCP)</option>
+                            <option value="Chartered Financial Analyst (CFA)">Chartered Financial Analyst (CFA)</option>
+                            <option value="Professional in Human Resources (PHR)">Professional in Human Resources (PHR)</option>
+                            <option value="Senior Professional in Human Resources (SPHR)">Senior Professional in Human Resources (SPHR)</option>
+                            <option value="Chartered Institute of Personnel and Development (CIPD) Certification">Chartered Institute of Personnel and Development (CIPD) Certification</option>
+                            <option value="Chartered Institute of Marketing (CIM)">Chartered Institute of Marketing (CIM)</option>
+                            <option value="Chartered Institute of Management Accountants (CIMA)">Chartered Institute of Management Accountants (CIMA)</option>
+                            <option value="Professional Engineer (PE)">Professional Engineer (PE)</option>
+                            <option value="Chartered Engineer (CEng)">Chartered Engineer (CEng)</option>
+                            <option value="Chartered Scientist (CSci)">Chartered Scientist (CSci)</option>
+                            <option value="Certified Laboratory Professional">Certified Laboratory Professional</option>
+                            <option value="Certified Environmental Practitioner (CEP)">Certified Environmental Practitioner (CEP)</option>
+                            <option value="Environmental Impact Assessment (EIA) Practitioner Certification">Environmental Impact Assessment (EIA) Practitioner Certification</option>
+                            <option value="Certified Information Systems Security Professional (CISSP)">Certified Information Systems Security Professional (CISSP)</option>
+                            <option value="Certified Quality Manager (CQM)">Certified Quality Manager (CQM)</option>
+                            <option value="Six Sigma Certification">Six Sigma Certification</option>
+                            <option value="GIS Professional (GISP)">GIS Professional (GISP)</option>
+                            <option value="Esri Technical Certification">Esri Technical Certification</option>
+                            <option value="Licensed Surveyor">Licensed Surveyor</option>
+                            <option value="Chartered Land Surveyor">Chartered Land Surveyor</option>
+                            <option value="Certified Market Researcher (CMRP)">Certified Market Researcher (CMRP)</option>
+                            <option value="Certified Social Researcher (CSR)">Certified Social Researcher (CSR)</option>
+                            <option value="Diploma in Legal Practice">Diploma in Legal Practice</option>
+                            <option value="Mediation and Arbitration Certifications">Mediation and Arbitration Certifications</option>
+                            <option value="International Bar Association (IBA) Certifications">International Bar Association (IBA) Certifications</option>
+                            <option value="International Comparative Legal Guide (ICLG) Certifications">International Comparative Legal Guide (ICLG) Certifications</option>
                         </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Affiliations[0].Name">Professional Bodies:</label>
+                        <div id="affiliationContainer">
+                            <input asp-for="Affiliations[0].Name" class="form-control" />
+                        </div>
+                        <!-- Other contact fields... -->
+                        <button type="button" id="addAffiliation" class="btn btn-primary">Add Profession Body</button>
                     </div>
                     <div class="form-group">
                         <label for="CvFile">Upload File:</label>
@@ -244,6 +286,21 @@
                                 `;
 
                 $("#languagesContainer").append(newLanguageHtml);
+            });
+
+            // Add Affiliation
+            $("#addAffiliation").click(function () {
+                var index = $("#affiliationContainer input").length;
+
+                var newAffiliationHtml = `
+                                            <div>
+                                                <label>Profession Body${index + 1}:</label>
+                                                        <input name="Affiliations[${index}].Name" class="form-control" />
+                                                <!-- Other contact fields... -->
+                                            </div>
+                                        `;
+
+                $("#affiliationContainer").append(newAffiliationHtml);
             });
 
             // Add phone contacts

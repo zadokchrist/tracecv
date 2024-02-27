@@ -18,6 +18,26 @@ namespace TraceCV.Migrations
                 .HasAnnotation("ProductVersion", "7.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("TraceCV.Models.Affiliation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("ExpertId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExpertId");
+
+                    b.ToTable("Affiliations");
+                });
+
             modelBuilder.Entity("TraceCV.Models.Certificate", b =>
                 {
                     b.Property<int>("Id")
@@ -182,6 +202,15 @@ namespace TraceCV.Migrations
                     b.ToTable("OtherKeyExpertises");
                 });
 
+            modelBuilder.Entity("TraceCV.Models.Affiliation", b =>
+                {
+                    b.HasOne("TraceCV.Models.Expert", null)
+                        .WithMany("Affiliations")
+                        .HasForeignKey("ExpertId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("TraceCV.Models.Certificate", b =>
                 {
                     b.HasOne("TraceCV.Models.Expert", null)
@@ -229,6 +258,8 @@ namespace TraceCV.Migrations
 
             modelBuilder.Entity("TraceCV.Models.Expert", b =>
                 {
+                    b.Navigation("Affiliations");
+
                     b.Navigation("Certificates");
 
                     b.Navigation("Contacts");
