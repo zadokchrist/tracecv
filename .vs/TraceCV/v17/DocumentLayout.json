@@ -3,28 +3,44 @@
   "WorkspaceRootPath": "D:\\working directory\\TraceCV\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|d:\\working directory\\tracecv\\tracecv\\models\\expert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|solutionrelative:tracecv\\models\\expert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|d:\\working directory\\tracecv\\tracecv\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|solutionrelative:tracecv\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|d:\\working directory\\tracecv\\tracecv\\views\\expert\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|solutionrelative:tracecv\\views\\expert\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|d:\\working directory\\tracecv\\tracecv\\data\\databasehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|solutionrelative:tracecv\\data\\databasehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|d:\\working directory\\tracecv\\tracecv\\views\\expert\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|solutionrelative:tracecv\\views\\expert\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|d:\\working directory\\tracecv\\tracecv\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|solutionrelative:tracecv\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|d:\\working directory\\tracecv\\tracecv\\controllers\\expertcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|solutionrelative:tracecv\\controllers\\expertcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|d:\\working directory\\tracecv\\tracecv\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|solutionrelative:tracecv\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|d:\\working directory\\tracecv\\tracecv\\views\\expert\\listofexperts.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|solutionrelative:tracecv\\views\\expert\\listofexperts.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|d:\\working directory\\tracecv\\tracecv\\data\\databasehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|solutionrelative:tracecv\\data\\databasehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|d:\\working directory\\tracecv\\tracecv\\views\\expert\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|solutionrelative:tracecv\\views\\expert\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|d:\\working directory\\tracecv\\tracecv\\views\\expert\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|solutionrelative:tracecv\\views\\expert\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|d:\\working directory\\tracecv\\tracecv\\models\\expert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|solutionrelative:tracecv\\models\\expert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|d:\\working directory\\tracecv\\tracecv\\models\\certificate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|solutionrelative:tracecv\\models\\certificate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|d:\\working directory\\tracecv\\tracecv\\models\\affiliation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -43,14 +59,6 @@
       "RelativeMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|solutionrelative:tracecv\\models\\education.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|d:\\working directory\\tracecv\\tracecv\\models\\certificate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|solutionrelative:tracecv\\models\\certificate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|d:\\working directory\\tracecv\\tracecv\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|solutionrelative:tracecv\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|d:\\working directory\\tracecv\\tracecv\\migrations\\20240220101150_additionofcertificates_and_otherkeyexpertiseupdate3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|solutionrelative:tracecv\\migrations\\20240220101150_additionofcertificates_and_otherkeyexpertiseupdate3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -65,6 +73,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|d:\\working directory\\tracecv\\tracecv\\migrations\\20240222135738_additionofaffiliation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|solutionrelative:tracecv\\migrations\\20240222135738_additionofaffiliation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|d:\\working directory\\tracecv\\tracecv\\migrations\\20240227070144_makingnamesnullable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8B6C796-8F85-486C-BAA7-9C06060C4E96}|TraceCV\\TraceCV.csproj|solutionrelative:tracecv\\migrations\\20240227070144_makingnamesnullable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -74,110 +86,72 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ExpertController.cs",
-              "DocumentMoniker": "D:\\working directory\\TraceCV\\TraceCV\\Controllers\\ExpertController.cs",
-              "RelativeDocumentMoniker": "TraceCV\\Controllers\\ExpertController.cs",
-              "ToolTip": "D:\\working directory\\TraceCV\\TraceCV\\Controllers\\ExpertController.cs",
-              "RelativeToolTip": "TraceCV\\Controllers\\ExpertController.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAWwFkAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-20T08:57:11.238Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\working directory\\TraceCV\\TraceCV\\Views\\Expert\\Index.cshtml",
-              "RelativeDocumentMoniker": "TraceCV\\Views\\Expert\\Index.cshtml",
-              "ToolTip": "D:\\working directory\\TraceCV\\TraceCV\\Views\\Expert\\Index.cshtml",
-              "RelativeToolTip": "TraceCV\\Views\\Expert\\Index.cshtml",
-              "ViewState": "AQIAANEAAAAAAAAAAAAqwOEAAAAyAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-02-20T08:56:06.773Z",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\working directory\\TraceCV\\TraceCV\\appsettings.json",
+              "RelativeDocumentMoniker": "TraceCV\\appsettings.json",
+              "ToolTip": "D:\\working directory\\TraceCV\\TraceCV\\appsettings.json",
+              "RelativeToolTip": "TraceCV\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-03-13T08:00:27.515Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\working directory\\TraceCV\\TraceCV\\Program.cs",
+              "RelativeDocumentMoniker": "TraceCV\\Program.cs",
+              "ToolTip": "D:\\working directory\\TraceCV\\TraceCV\\Program.cs",
+              "RelativeToolTip": "TraceCV\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAACFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-13T06:27:14.467Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\working directory\\TraceCV\\TraceCV\\Views\\Expert\\Index.cshtml",
+              "RelativeDocumentMoniker": "TraceCV\\Views\\Expert\\Index.cshtml",
+              "ToolTip": "D:\\working directory\\TraceCV\\TraceCV\\Views\\Expert\\Index.cshtml",
+              "RelativeToolTip": "TraceCV\\Views\\Expert\\Index.cshtml",
+              "ViewState": "AQIAAKcAAAAAAAAAAAAqwLcAAABWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-02-20T08:56:06.773Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "D:\\working directory\\TraceCV\\TraceCV\\Views\\Expert\\Edit.cshtml",
               "RelativeDocumentMoniker": "TraceCV\\Views\\Expert\\Edit.cshtml",
               "ToolTip": "D:\\working directory\\TraceCV\\TraceCV\\Views\\Expert\\Edit.cshtml",
               "RelativeToolTip": "TraceCV\\Views\\Expert\\Edit.cshtml",
-              "ViewState": "AQIAAGkAAAAAAAAAAAAqwH4AAAAzAAAA",
+              "ViewState": "AQIAAKUAAAAAAAAAAAAqwLUAAABWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-02-20T09:15:07.57Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Expert.cs",
-              "DocumentMoniker": "D:\\working directory\\TraceCV\\TraceCV\\Models\\Expert.cs",
-              "RelativeDocumentMoniker": "TraceCV\\Models\\Expert.cs",
-              "ToolTip": "D:\\working directory\\TraceCV\\TraceCV\\Models\\Expert.cs",
-              "RelativeToolTip": "TraceCV\\Models\\Expert.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAwwBkAAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-14T06:03:48.947Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Language.cs",
-              "DocumentMoniker": "D:\\working directory\\TraceCV\\TraceCV\\Models\\Language.cs",
-              "RelativeDocumentMoniker": "TraceCV\\Models\\Language.cs",
-              "ToolTip": "D:\\working directory\\TraceCV\\TraceCV\\Models\\Language.cs",
-              "RelativeToolTip": "TraceCV\\Models\\Language.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-20T09:53:59.137Z"
+              "WhenOpened": "2024-02-20T09:15:07.57Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "DatabaseHandler.cs",
-              "DocumentMoniker": "D:\\working directory\\TraceCV\\TraceCV\\Data\\DatabaseHandler.cs",
-              "RelativeDocumentMoniker": "TraceCV\\Data\\DatabaseHandler.cs",
-              "ToolTip": "D:\\working directory\\TraceCV\\TraceCV\\Data\\DatabaseHandler.cs",
-              "RelativeToolTip": "TraceCV\\Data\\DatabaseHandler.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAA8AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-20T09:11:23.942Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "ListOfExperts.cshtml",
               "DocumentMoniker": "D:\\working directory\\TraceCV\\TraceCV\\Views\\Expert\\ListOfExperts.cshtml",
               "RelativeDocumentMoniker": "TraceCV\\Views\\Expert\\ListOfExperts.cshtml",
               "ToolTip": "D:\\working directory\\TraceCV\\TraceCV\\Views\\Expert\\ListOfExperts.cshtml",
               "RelativeToolTip": "TraceCV\\Views\\Expert\\ListOfExperts.cshtml",
-              "ViewState": "AQIAABsAAAAAAAAAAAAAAC8AAAAtAAAA",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAACMAAABCAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-02-22T12:47:16.302Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Affiliation.cs",
-              "DocumentMoniker": "D:\\working directory\\TraceCV\\TraceCV\\Models\\Affiliation.cs",
-              "RelativeDocumentMoniker": "TraceCV\\Models\\Affiliation.cs",
-              "ToolTip": "D:\\working directory\\TraceCV\\TraceCV\\Models\\Affiliation.cs",
-              "RelativeToolTip": "TraceCV\\Models\\Affiliation.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-22T13:55:48.836Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "20240222135738_additionofaffiliation.cs",
               "DocumentMoniker": "D:\\working directory\\TraceCV\\TraceCV\\Migrations\\20240222135738_additionofaffiliation.cs",
               "RelativeDocumentMoniker": "TraceCV\\Migrations\\20240222135738_additionofaffiliation.cs",
@@ -189,7 +163,103 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DatabaseHandler.cs",
+              "DocumentMoniker": "D:\\working directory\\TraceCV\\TraceCV\\Data\\DatabaseHandler.cs",
+              "RelativeDocumentMoniker": "TraceCV\\Data\\DatabaseHandler.cs",
+              "ToolTip": "D:\\working directory\\TraceCV\\TraceCV\\Data\\DatabaseHandler.cs",
+              "RelativeToolTip": "TraceCV\\Data\\DatabaseHandler.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABEAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-20T09:11:23.942Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ExpertController.cs",
+              "DocumentMoniker": "D:\\working directory\\TraceCV\\TraceCV\\Controllers\\ExpertController.cs",
+              "RelativeDocumentMoniker": "TraceCV\\Controllers\\ExpertController.cs",
+              "ToolTip": "D:\\working directory\\TraceCV\\TraceCV\\Controllers\\ExpertController.cs",
+              "RelativeToolTip": "TraceCV\\Controllers\\ExpertController.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAABgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-20T08:57:11.238Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "20240227070144_makingnamesnullable.cs",
+              "DocumentMoniker": "D:\\working directory\\TraceCV\\TraceCV\\Migrations\\20240227070144_makingnamesnullable.cs",
+              "RelativeDocumentMoniker": "TraceCV\\Migrations\\20240227070144_makingnamesnullable.cs",
+              "ToolTip": "D:\\working directory\\TraceCV\\TraceCV\\Migrations\\20240227070144_makingnamesnullable.cs",
+              "RelativeToolTip": "TraceCV\\Migrations\\20240227070144_makingnamesnullable.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-27T07:01:44.72Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\working directory\\TraceCV\\TraceCV\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "TraceCV\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\working directory\\TraceCV\\TraceCV\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "TraceCV\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-20T08:58:53.455Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Affiliation.cs",
+              "DocumentMoniker": "D:\\working directory\\TraceCV\\TraceCV\\Models\\Affiliation.cs",
+              "RelativeDocumentMoniker": "TraceCV\\Models\\Affiliation.cs",
+              "ToolTip": "D:\\working directory\\TraceCV\\TraceCV\\Models\\Affiliation.cs",
+              "RelativeToolTip": "TraceCV\\Models\\Affiliation.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-22T13:55:48.836Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Language.cs",
+              "DocumentMoniker": "D:\\working directory\\TraceCV\\TraceCV\\Models\\Language.cs",
+              "RelativeDocumentMoniker": "TraceCV\\Models\\Language.cs",
+              "ToolTip": "D:\\working directory\\TraceCV\\TraceCV\\Models\\Language.cs",
+              "RelativeToolTip": "TraceCV\\Models\\Language.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-20T09:53:59.137Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 8,
+              "Title": "Expert.cs",
+              "DocumentMoniker": "D:\\working directory\\TraceCV\\TraceCV\\Models\\Expert.cs",
+              "RelativeDocumentMoniker": "TraceCV\\Models\\Expert.cs",
+              "ToolTip": "D:\\working directory\\TraceCV\\TraceCV\\Models\\Expert.cs",
+              "RelativeToolTip": "TraceCV\\Models\\Expert.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAA/wBwAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-14T06:03:48.947Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Certificate.cs",
+              "DocumentMoniker": "D:\\working directory\\TraceCV\\TraceCV\\Models\\Certificate.cs",
+              "RelativeDocumentMoniker": "TraceCV\\Models\\Certificate.cs",
+              "ToolTip": "D:\\working directory\\TraceCV\\TraceCV\\Models\\Certificate.cs",
+              "RelativeToolTip": "TraceCV\\Models\\Certificate.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-20T09:13:25.64Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "OtherKeyExpertise.cs",
               "DocumentMoniker": "D:\\working directory\\TraceCV\\TraceCV\\Models\\OtherKeyExpertise.cs",
               "RelativeDocumentMoniker": "TraceCV\\Models\\OtherKeyExpertise.cs",
@@ -201,19 +271,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Certificate.cs",
-              "DocumentMoniker": "D:\\working directory\\TraceCV\\TraceCV\\Models\\Certificate.cs",
-              "RelativeDocumentMoniker": "TraceCV\\Models\\Certificate.cs",
-              "ToolTip": "D:\\working directory\\TraceCV\\TraceCV\\Models\\Certificate.cs",
-              "RelativeToolTip": "TraceCV\\Models\\Certificate.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAABCAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-20T09:13:25.64Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "20240220101209_AdditionOfCertificates_and_otherkeyexpertiseUpdate4.cs",
               "DocumentMoniker": "D:\\working directory\\TraceCV\\TraceCV\\Migrations\\20240220101209_AdditionOfCertificates_and_otherkeyexpertiseUpdate4.cs",
               "RelativeDocumentMoniker": "TraceCV\\Migrations\\20240220101209_AdditionOfCertificates_and_otherkeyexpertiseUpdate4.cs",
@@ -225,7 +283,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "Education.cs",
               "DocumentMoniker": "D:\\working directory\\TraceCV\\TraceCV\\Models\\Education.cs",
               "RelativeDocumentMoniker": "TraceCV\\Models\\Education.cs",
@@ -237,7 +295,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "20240220101150_AdditionOfCertificates_and_otherkeyexpertiseUpdate3.cs",
               "DocumentMoniker": "D:\\working directory\\TraceCV\\TraceCV\\Migrations\\20240220101150_AdditionOfCertificates_and_otherkeyexpertiseUpdate3.cs",
               "RelativeDocumentMoniker": "TraceCV\\Migrations\\20240220101150_AdditionOfCertificates_and_otherkeyexpertiseUpdate3.cs",
@@ -249,7 +307,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "20240220095431_AdditionOfCertificates_and_otherkeyexpertiseUpdate.cs",
               "DocumentMoniker": "D:\\working directory\\TraceCV\\TraceCV\\Migrations\\20240220095431_AdditionOfCertificates_and_otherkeyexpertiseUpdate.cs",
               "RelativeDocumentMoniker": "TraceCV\\Migrations\\20240220095431_AdditionOfCertificates_and_otherkeyexpertiseUpdate.cs",
@@ -258,18 +316,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-20T09:54:31.545Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "D:\\working directory\\TraceCV\\TraceCV\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "TraceCV\\Controllers\\HomeController.cs",
-              "ToolTip": "D:\\working directory\\TraceCV\\TraceCV\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "TraceCV\\Controllers\\HomeController.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-20T08:58:53.455Z"
             }
           ]
         }
