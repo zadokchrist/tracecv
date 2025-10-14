@@ -252,6 +252,7 @@ namespace TraceCV.Controllers
                 .Where(s => !string.IsNullOrWhiteSpace(s))
                 .Select(s => new Certificate { Name = s })
                 .ToList() ?? new List<Certificate>();
+
         }
     }
 }
