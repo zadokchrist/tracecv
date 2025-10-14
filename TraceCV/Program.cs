@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<TraceCV.Services.ICountryProvider, TraceCV.Services.StaticCountryProvider>();
 
 // Add your DbContext configuration here for MySQL
 builder.Services.AddDbContext<DatabaseHandler>(options =>
@@ -31,3 +32,4 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+

@@ -151,9 +151,9 @@
                                     <a class="dropdown-item" href="@Url.Action("Edit", new { id = expert.Id })">
                                         <i class="fas fa-edit"></i> Edit
                                     </a>
-                                    <a class="dropdown-item" href="@Url.Action("Delete", new { id = expert.Id })" onclick="return confirm('Are you sure you want to delete this expert?')">
+                                   @*  <a class="dropdown-item" href="@Url.Action("Delete", new { id = expert.Id })" onclick="return confirm('Are you sure you want to delete this expert?')">
                                         <i class="fas fa-trash"></i> Delete
-                                    </a>
+                                    </a> *@
                                     <a class="dropdown-item" href="@Url.Content(expert.CvFilePath)" download>
                                         <i class="fas fa-download"></i> Download CV
                                     </a>

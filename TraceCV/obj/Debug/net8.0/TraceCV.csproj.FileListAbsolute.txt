@@ -27,11 +27,6 @@ D:\working directory\TraceCV\TraceCV\bin\Debug\net8.0\Pomelo.EntityFrameworkCore
 D:\working directory\TraceCV\TraceCV\bin\Debug\net8.0\System.CodeDom.dll
 D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\staticwebassets.build.json
 D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\staticwebassets.development.json
-D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\staticwebassets\msbuild.TraceCV.Microsoft.AspNetCore.StaticWebAssets.props
-D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\staticwebassets\msbuild.build.TraceCV.props
-D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.TraceCV.props
-D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.TraceCV.props
-D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\staticwebassets.pack.json
 D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\scopedcss\bundle\TraceCV.styles.css
 D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\scopedcss\projectbundle\TraceCV.bundle.scp.css
@@ -41,3 +36,11 @@ D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\refint\TraceCV.dll
 D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\TraceCV.pdb
 D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\TraceCV.genruntimeconfig.cache
 D:\working directory\TraceCV\TraceCV\obj\Debug\net8.0\ref\TraceCV.dll
+D:\Working Directory\tracecv\TraceCV\bin\Debug\net8.0\TraceCV.staticwebassets.endpoints.json
+D:\Working Directory\tracecv\TraceCV\obj\Debug\net8.0\rpswa.dswa.cache.json
+D:\Working Directory\tracecv\TraceCV\obj\Debug\net8.0\rjimswa.dswa.cache.json
+D:\Working Directory\tracecv\TraceCV\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+D:\Working Directory\tracecv\TraceCV\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+D:\Working Directory\tracecv\TraceCV\obj\Debug\net8.0\staticwebassets.build.json.cache
+D:\Working Directory\tracecv\TraceCV\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\Working Directory\tracecv\TraceCV\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
