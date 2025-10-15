@@ -4,6 +4,15 @@
 @model Expert;
 @{
     var countries = (IReadOnlyList<TraceCV.Services.CountryItem>) (ViewBag.Countries ?? Array.Empty<TraceCV.Services.CountryItem>());
+
+    // ISO2 list for African countries
+    var africanIso = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+    {
+        "DZ","AO","BJ","BW","BF","BI","CM","CV","CF","TD","KM","CI","CD","DJ","EG","GQ","ER","SZ","ET","GA","GM",
+        "GH","GN","GW","KE","LS","LR","LY","MG","MW","ML","MR","MU","MA","MZ","NA","NE","NG","RW","ST","SN","SC",
+        "SL","SO","ZA","SS","SD","TZ","TG","TN","UG","ZM","ZW","EH"
+    };
+    var africanCountries = countries.Where(c => africanIso.Contains(c.Iso2)).OrderBy(c => c.Name).ToList();
 }
 <h2>Create Expert</h2>
 @if (TempData["SuccessMessage"] != null)
@@ -131,17 +140,23 @@
             <div class="form-group">
                 <label for="Sector">Sector:</label>
                 <select asp-for="Sector" class="form-control" id="sectorSelect">
-                    <option selected disabled> Please Select Expert's Sector</option>
-                    <option value="Water and Sanitation">Water and Sanitation</option>
-                    <option value="Energy">Energy</option>
-                    <option value="Environment">Environment</option>
-                    <option value="Governance">Governance</option>
-                    <option value="Technology">Technology</option>
-                    <option value="__OTHER__">Other (specify)</option>
+                    <option value="" selected disabled> Please Select Expert's Sector</option>
+                    <option value="Water and Environment">Water and Environment</option>
+                    <option value="Energy, Oil , Gas & Minning">Energy, Oil , Gas &amp; Minning</option>
+                    <option value="Agriculture, Food Security & Livelihoods">Agriculture, Food Security &amp; Livelihoods</option>
+                    <option value="Public Administration and Governance">Public Administration and Governance</option>
+                    <option value="Health & Nutrition">Health &amp; Nutrition</option>
+                    <option value="Education & Skills Development">Education &amp; Skills Development</option>
+                    <option value="Information & Communication Technology (ICT)">Information &amp; Communication Technology (ICT)</option>
+                    <option value="Finance, Trade & Economic Development">Finance, Trade &amp; Economic Development</option>
+                    <option value="Gender Equality & Social Inclusion">Gender Equality &amp; Social Inclusion</option>
+                    <option value="Urban Development & Housing">Urban Development &amp; Housing</option>
+                    <option value="Transport & Construction">Transport &amp; Construction</option>
+                    <option value="__OTHER__">L. Others (specify)</option>
                 </select>
                 <div id="sectorOtherWrapper" class="mt-2" style="display:none;">
                     <label for="sectorOtherInput">Specify Other Sector:</label>
-                    <input type="text" id="sectorOtherInput" class="form-control" maxlength="80" />
+                    <input type="text" id="sectorOtherInput" class="form-control" maxlength="120" />
                 </div>
             </div>
 
@@ -213,7 +228,7 @@
             <!-- Education Level -->
             <div id="educationsContainer" class="form-group">
                 <label for="Educations[0].Level">Education Level:</label>
-                <select asp-for="Educations[0].Level" class="form-control" id="educationLevelSelect">
+                <select asp-for="Educations[0].Level" class="form-control" id="educationLevelSelect" required>
                     <option selected> Please Select Level of Education</option>
                     <option value="Bachelors">Bachelors</option>
                     <option value="Masters">Masters</option>
@@ -273,7 +288,16 @@
                     <input type="text" id="certificatesOtherInput" class="form-control" maxlength="120" />
                 </div>
             </div>
-
+            <div class="form-group">
+                <label for="africanCountriesSelect">Countries Worked In (Africa):</label>
+                <select asp-for="SelectedAfricanCountries" class="form-control" multiple id="africanCountriesSelect">
+                    @foreach (var c in africanCountries)
+                    {
+                        <option value="@c.Iso2">@c.Name</option>
+                    }
+                </select>
+                <small class="form-text text-muted">Hold Ctrl/Cmd to select multiple countries.</small>
+            </div>
             <div class="form-group">
                 <label for="Affiliations[0].Name">Professional Bodies:</label>
                 <div id="affiliationContainer">
@@ -287,11 +311,13 @@
                 <input type="file" asp-for="CvFile" class="form-control" />
             </div>
         </div>
+        
     </div>
     <div class="row">
         <button type="submit" class="btn btn-success">Create</button>
     </div>
 </form>
+
 
 @section Scripts {
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -396,6 +422,12 @@
 
             setupMultiSelectWithOther('otherKeyExpertiseSelect', 'otherKeyExpertiseWrapper', 'otherKeyExpertiseInput');
             setupMultiSelectWithOther('certificatesSelect', 'certificatesOtherWrapper', 'certificatesOtherInput');
+
+            // Enhance the Africa multi-select with Select2 (optional)
+            $('#africanCountriesSelect').select2({
+                placeholder: 'Select African countries',
+                width: '100%'
+            });
 
             // Mirror selected key expertise
             $("#otherKeyExpertiseSelect").on("change", function () {

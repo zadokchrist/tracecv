@@ -12,10 +12,13 @@ namespace TraceCV.Models
             Languages = new List<Language> { new Language() };
             Affiliations = new List<Affiliation> { new Affiliation() };
 
-            OtherKeyExpertises = new List<OtherKeyExpertise>(); // mapped from SelectedOtherKeyExpertises
-            Certificates = new List<Certificate>();             // mapped from SelectedCertificates
+            OtherKeyExpertises = new List<OtherKeyExpertise>();
+            Certificates = new List<Certificate>();
+
             SelectedOtherKeyExpertises = new List<string>();
             SelectedCertificates = new List<string>();
+            SelectedAfricanCountries = new List<string>();
+            AfricanCountriesWorked = new List<WorkedCountry>();
         }
 
         public int Id { get; set; }
@@ -43,14 +46,15 @@ namespace TraceCV.Models
         public List<OtherKeyExpertise>? OtherKeyExpertises { get; set; }
         public List<Certificate>? Certificates { get; set; }
 
-        [NotMapped]
-        public List<string> SelectedOtherKeyExpertises { get; set; }
+        // New: persisted list of African countries worked in
+        public List<WorkedCountry> AfricanCountriesWorked { get; set; }
 
-        [NotMapped]
-        public List<string> SelectedCertificates { get; set; }
+        // NotMapped selections for multi-selects
+        [NotMapped] public List<string> SelectedOtherKeyExpertises { get; set; }
+        [NotMapped] public List<string> SelectedCertificates { get; set; }
+        [NotMapped] public List<string> SelectedAfricanCountries { get; set; }
 
-        [NotMapped]
-        public IFormFile CvFile { get; set; }
+        [NotMapped] public IFormFile CvFile { get; set; }
         public string? CvFilePath { get; set; }
     }
 }

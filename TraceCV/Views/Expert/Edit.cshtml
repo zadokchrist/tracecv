@@ -1,376 +1,438 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@model Expert;
+﻿@model Expert
 @{
+    var countries = (IReadOnlyList<TraceCV.Services.CountryItem>)(ViewBag.Countries ?? Array.Empty<TraceCV.Services.CountryItem>());
+
+    var africanIso = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+    {
+        "DZ","AO","BJ","BW","BF","BI","CM","CV","CF","TD","KM","CI","CD","DJ","EG","GQ","ER","SZ","ET","GA","GM",
+        "GH","GN","GW","KE","LS","LR","LY","MG","MW","ML","MR","MU","MA","MZ","NA","NE","NG","RW","ST","SN","SC",
+        "SL","SO","ZA","SS","SD","TZ","TG","TN","UG","ZM","ZW","EH"
+    };
+    var africanCountries = countries.Where(c => africanIso.Contains(c.Iso2)).OrderBy(c => c.Name).ToList();
 }
-        <h2>Update Expert Details</h2>
-        @if (TempData["SuccessMessage"] != null)
-        {
-            <div class="alert alert-success">
-                @TempData["SuccessMessage"]
+<h2>Edit Expert</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
+<form asp-action="Edit" asp-route-id="@Model.Id" id="editExpertForm" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label>Name:</label>
+                <input asp-for="Name" class="form-control" />
             </div>
-        }
 
-        @if (TempData["ErrorMessage"] != null)
-        {
-            <div class="alert alert-danger">
-                @TempData["ErrorMessage"]
+            <div class="form-group">
+                <label>Gender:</label>
+                <select asp-for="Gender" class="form-control">
+                    <option value="">Please Select Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
             </div>
-        }
 
-        <form asp-action="Edit" id="createExpertForm" method="post" enctype="multipart/form-data">
-            <div class="row">
-                <div class="col">
-                    <!-- User details -->
-                    <div class="form-group">
-                        <label for="Name">Name:</label>
-                        <input asp-for="Name" class="form-control" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="Gender">Gender:</label>
-                        <select asp-for="Gender" class="form-control" required>
-                            <option selected disabled> Please Select Gender</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="DOB">Date of Birth:</label>
-                        <input type="date" asp-for="DOB" class="form-control" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="Name">Nationality:</label>
-                        <select asp-for="Nationality" class="form-control" id="nationalityDropdown">
-                            <!-- Add an empty option for placeholder -->
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="Email">Email:</label>
-                        <input asp-for="Email" class="form-control" />
-                    </div>
-                    <!-- Contacts -->
-                    <div class="form-group">
-                        <div id="contactsContainer">
-                            <label for="Contacts[0].PhoneNumber">Phone Number:</label>
-                            <input asp-for="Contacts[0].PhoneNumber" class="form-control" />
+            <div class="form-group">
+                <label>Date of Birth:</label>
+                <input type="date" asp-for="DOB" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label>Nationality:</label>
+                <select asp-for="Nationality" class="form-control" id="nationalityDropdown">
+                    <option value="">Please Select Nationality</option>
+                    @foreach (var c in countries)
+                    {
+                        <option value="@c.Iso2" selected="@(Model.Nationality == c.Iso2 ? "selected" : null)">@c.Name</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Email:</label>
+                <input asp-for="Email" class="form-control" />
+            </div>
+
+            <!-- Contacts -->
+            <div class="form-group">
+                <label>Phone Number(s):</label>
+                <div id="contactsContainer">
+                    @for (var i = 0; i < (Model.Contacts?.Count ?? 0); i++)
+                    {
+                        <div class="mt-2 contact-item">
+                            <input type="hidden" asp-for="Contacts[i].Id" />
+                            <label>Contact @(i + 1):</label>
+                            <input asp-for="Contacts[i].PhoneNumber" class="form-control" />
                         </div>
-                        <!-- Other contact fields... -->
-                        <button type="button" id="addContact" class="btn btn-primary">Add Contact</button>
-                    </div>
-                    <div class="form-group">
-                        <label for="experience">Years of Experience:</label>
-                        <input type="number" asp-for="experience" class="form-control" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="Name">Year CV Last Edited:</label>
-                        <input asp-for="lastedit" class="form-control" />
-                    </div>
-                    <div class="form-group">
-                        <label for="WorkedWith2ML">Employment Status:</label>
-                        <div class="form-check">
-                    <input type="radio" asp-for="EmploymentStatus" value="Employed" class="form-check-input" id="employed" onclick="CheckEmploymentStatus()" required />
-                            <label class="form-check-label">Employed</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="radio" asp-for="EmploymentStatus" value="SelfEmployed" class="form-check-input" onclick="CheckEmploymentStatus()"  required />
-                            <label class="form-check-label">Self Employed</label>
-                        </div>
-                    </div>
-                    <div class="form-group" id="currentEmployerTextbox">
-                        <label for="Name">Current Employer:</label>
-                        <input asp-for="CurrentEmployer" class="form-control" />
-                    </div>
-                   
-                    <div class="form-group">
-                        <label for="Languages[0].Language">Languages:</label>
-                        <div id="languagesContainer">
-                            <input asp-for="Languages[0].Type" class="form-control" required />
-                        </div>
-                        <!-- Other contact fields... -->
-                        <button type="button" id="addLanguage" class="btn btn-primary">Add Language</button>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="WorkedWith2ML">Ever Worked With 2ML:</label>
-                        <div class="form-check">
-                            <input type="radio" asp-for="WorkedWith2ML" value="true" class="form-check-input" required />
-                            <label class="form-check-label">Yes</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="radio" asp-for="WorkedWith2ML" value="false" class="form-check-input" required />
-                            <label class="form-check-label">No</label>
-                        </div>
-                    </div>
-                    
+                    }
                 </div>
-                <div class="col">
-                <div class="form-group">
-                    <label for="Name">Category:</label>
-                    <select asp-for="Category" class="form-control">
-                        <option selected disabled> Please Select Category</option>
-                        <option value="Trainee">Trainee</option>
-                        <option value="FullTime Staff">FullTime Staff</option>
-                        <option value="Short term basis associate">Short term basis associate</option>
-                        <option value="Long term basis">Long term basis</option>
-                    </select>
+                <button type="button" id="addContact" class="btn btn-primary mt-2">Add Contact</button>
+            </div>
+
+            <div class="form-group">
+                <label>Years of Experience:</label>
+                <input type="number" asp-for="experience" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label>Year CV Last Edited:</label>
+                <input asp-for="lastedit" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label>Employment Status:</label>
+                <div class="form-check">
+                    <input type="radio" asp-for="EmploymentStatus" value="Employed" class="form-check-input" id="employed" onclick="CheckEmploymentStatus()" />
+                    <label class="form-check-label" for="employed">Employed</label>
                 </div>
-                    
-                    <div class="form-group">
-                        <label for="Sector">Sector:</label>
-                        <select asp-for="Sector" class="form-control">
-                            <option selected disabled> Please Select Expert's Sector</option>
-                            <option value="Water and Sanitation">Water and Sanitation</option>
-                            <option value="Energy">Energy</option>
-                            <option value="Environment">Environment</option>
-                            <option value="Governance">Governance</option>
-                            <option value="Technology">Technology</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="Speciality">Area of Speciality:</label>
-                        <select asp-for="Speciality" class="form-control">
-                            <option selected disabled>Expert's Speciality</option>
-                            <option value="ICT">ICT</option>
-                            <option value="Economist">Economist</option>
-                            <option value="Engineering">Engineering</option>
-                            <option value="Human Resource">Human Resource</option>
-                            <option value="M&E">M&E</option>
-                            <option value="Enviroment">Enviroment</option>
-                            <option value="GIS">GIS</option>
-                            <option value="Policy Regulation & legal">Policy Regulation & legal</option>
-                            <option value="PPP (Public Private Partnership)">PPP (Public Private Partnership)</option>
-                            <option value="Sociologist">Gender and Social Development</option>
-                            <option value="Commercial">Commercial</option>
-                            <option value="WASH/ Sanitation">WASH/ Sanitation</option>
-                            <option value="Asset Management">Asset Management</option>
-                            <option value="Financial Management">Financial Management</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="OtherKeyExpertise">Other Key Expertise:</label>
-                        <hr class="my-3"> <!-- Add a horizontal line as a divider -->
-                        <select asp-for="OtherKeyExpertises[0].Expertise" class="form-control" multiple id="otherKeyExpertiseSelect">
-                            <option selected disabled>Other Key Expertise</option>
-                            <option value="TrainingAndCapacityBuilding">Training and Capacity Building</option>
-                            <option value="MandE">M&E</option>
-                            <option value="GenderAndSocial">Gender and social sciences</option>
-                            <option value="InstitutionalDevelopment">Institutional Development</option>
-                            <option value="Research">Research</option>
-                            <option value="Audit">Audit</option>
-                            <option value="StrategicPlanning">Strategic Planning</option>
-                            <option value="WaterAndSanitation">Water and sanitation</option>
-                        </select>
-                    </div>
-                    <hr class="my-3"> <!-- Add a horizontal line as a divider -->
-                    <textarea id="selectedOptionsTextarea" class="form-control" readonly></textarea>
-
-                    <!-- Educations -->
-                    <div id="educationsContainer" class="form-group">
-                        <label for="Educations[0].Level">Education Level:</label>
-                        <select asp-for="Educations[0].Level" class="form-control">
-                            <option selected> Please Select Level of Education</option>
-                            <option value="Bachelors">Bachelors</option>
-                            <option value="Masters">Masters</option>
-                            <option value="MBA">MBA</option>
-                            <option value="Ph.D">Ph.D</option>
-                        </select>
-                    </div>
-                    <div id="educationsContainer" class="form-group">
-                        <label for="Educations[0].Level">Other Professional Certificates:</label>
-                        <select asp-for="Certificates" class="form-control" multiple>
-                            <option selected disabled> Please Select Level of Education</option>
-                            <option value="Artificial inteligence">Artificial inteligence</option>
-                            <option value="CCNA">CCNA</option>
-                            <option value="CISCO">CISCO</option>
-                            <option value="Executive Leadership Certificate">Executive Leadership Certificate</option>
-                            <option value="Project Management Professional (PMP)">Project Management Professional (PMP)</option>
-                            <option value="PRINCE2 Certification">PRINCE2 Certification</option>
-                            <option value="Certified Public Accountant (CPA)">Certified Public Accountant (CPA)</option>
-                            <option value="Certified Information Systems Auditor (CISA)">Certified Information Systems Auditor (CISA)</option>
-                            <option value="Chartered Institute of Procurement & Supply (CIPS)">Chartered Institute of Procurement & Supply (CIPS)</option>
-                            <option value="Certified Supply Chain Professional (CSCP)">Certified Supply Chain Professional (CSCP)</option>
-                            <option value="Chartered Financial Analyst (CFA)">Chartered Financial Analyst (CFA)</option>
-                            <option value="Professional in Human Resources (PHR)">Professional in Human Resources (PHR)</option>
-                            <option value="Senior Professional in Human Resources (SPHR)">Senior Professional in Human Resources (SPHR)</option>
-                            <option value="Chartered Institute of Personnel and Development (CIPD) Certification">Chartered Institute of Personnel and Development (CIPD) Certification</option>
-                            <option value="Chartered Institute of Marketing (CIM)">Chartered Institute of Marketing (CIM)</option>
-                            <option value="Chartered Institute of Management Accountants (CIMA)">Chartered Institute of Management Accountants (CIMA)</option>
-                            <option value="Professional Engineer (PE)">Professional Engineer (PE)</option>
-                            <option value="Chartered Engineer (CEng)">Chartered Engineer (CEng)</option>
-                            <option value="Chartered Scientist (CSci)">Chartered Scientist (CSci)</option>
-                            <option value="Certified Laboratory Professional">Certified Laboratory Professional</option>
-                            <option value="Certified Environmental Practitioner (CEP)">Certified Environmental Practitioner (CEP)</option>
-                            <option value="Environmental Impact Assessment (EIA) Practitioner Certification">Environmental Impact Assessment (EIA) Practitioner Certification</option>
-                            <option value="Certified Information Systems Security Professional (CISSP)">Certified Information Systems Security Professional (CISSP)</option>
-                            <option value="Certified Quality Manager (CQM)">Certified Quality Manager (CQM)</option>
-                            <option value="Six Sigma Certification">Six Sigma Certification</option>
-                            <option value="GIS Professional (GISP)">GIS Professional (GISP)</option>
-                            <option value="Esri Technical Certification">Esri Technical Certification</option>
-                            <option value="Licensed Surveyor">Licensed Surveyor</option>
-                            <option value="Chartered Land Surveyor">Chartered Land Surveyor</option>
-                            <option value="Certified Market Researcher (CMRP)">Certified Market Researcher (CMRP)</option>
-                            <option value="Certified Social Researcher (CSR)">Certified Social Researcher (CSR)</option>
-                            <option value="Diploma in Legal Practice">Diploma in Legal Practice</option>
-                            <option value="Mediation and Arbitration Certifications">Mediation and Arbitration Certifications</option>
-                            <option value="International Bar Association (IBA) Certifications">International Bar Association (IBA) Certifications</option>
-                            <option value="International Comparative Legal Guide (ICLG) Certifications">International Comparative Legal Guide (ICLG) Certifications</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="Affiliations[0].Name">Professional Bodies:</label>
-                        <div id="affiliationContainer">
-                            <input asp-for="Affiliations[0].Name" class="form-control" required />
-                        </div>
-                        <!-- Other contact fields... -->
-                        <button type="button" id="addAffiliation" class="btn btn-primary">Add Profession Body</button>
-                    </div>
-                    <div class="form-group">
-                        <label for="CvFile">Upload File:</label>
-                        <input type="file" asp-for="CvFile" class="form-control" />
-
-                    </div>
+                <div class="form-check">
+                    <input type="radio" asp-for="EmploymentStatus" value="SelfEmployed" class="form-check-input" id="selfEmployed" onclick="CheckEmploymentStatus()" />
+                    <label class="form-check-label" for="selfEmployed">Self Employed</label>
                 </div>
             </div>
-            <div class="row">
-                <button type="submit" class="btn btn-success">Create</button>
-            </div>
-        </form>
 
- 
-    <!-- Your AJAX script here... -->
-@section scripts {
+            <div class="form-group" id="currentEmployerTextbox">
+                <label>Current Employer:</label>
+                <input asp-for="CurrentEmployer" class="form-control" />
+            </div>
+
+            <!-- Languages -->
+            <div class="form-group">
+                <label>Languages:</label>
+                <div id="languagesContainer">
+                    @for (var i = 0; i < (Model.Languages?.Count ?? 0); i++)
+                    {
+                        <div class="mt-2 language-item">
+                            <input type="hidden" asp-for="Languages[i].Id" />
+                            <label>Language @(i + 1):</label>
+                            <input asp-for="Languages[i].Type" class="form-control" />
+                        </div>
+                    }
+                </div>
+                <button type="button" id="addLanguage" class="btn btn-primary mt-2">Add Language</button>
+            </div>
+
+            <div class="form-group">
+                <label>Ever Worked With 2ML:</label>
+                <div class="form-check">
+                    <input type="radio" asp-for="WorkedWith2ML" value="true" class="form-check-input" id="workedYes" />
+                    <label class="form-check-label" for="workedYes">Yes</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" asp-for="WorkedWith2ML" value="false" class="form-check-input" id="workedNo" />
+                    <label class="form-check-label" for="workedNo">No</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <!-- Category -->
+            <div class="form-group">
+                <label>Category:</label>
+                <select asp-for="Category" class="form-control" id="categorySelect">
+                    <option value="">Please Select Category</option>
+                    <option value="Trainee">Trainee</option>
+                    <option value="FullTime Staff">FullTime Staff</option>
+                    <option value="PartTime Staff">PartTime Staff</option>
+                    <option value="Associate">Associate</option>
+                    <option value="__OTHER__">Other (specify)</option>
+                </select>
+                <div id="categoryOtherWrapper" class="mt-2" style="display:none;">
+                    <label for="categoryOtherInput">Specify Other Category:</label>
+                    <input type="text" id="categoryOtherInput" class="form-control" maxlength="80" />
+                </div>
+            </div>
+
+            <!-- Sector -->
+            <div class="form-group">
+                <label>Sector:</label>
+                <select asp-for="Sector" class="form-control" id="sectorSelect">
+                    <option value=""> Please Select Expert's Sector</option>
+                    <option value="Water and Environment">Water and Environment</option>
+                    <option value="Energy, Oil , Gas & Minning">Energy, Oil , Gas &amp; Minning</option>
+                    <option value="Agriculture, Food Security & Livelihoods">Agriculture, Food Security &amp; Livelihoods</option>
+                    <option value="Public Administration and Governance">Public Administration and Governance</option>
+                    <option value="Health & Nutrition">Health &amp; Nutrition</option>
+                    <option value="Education & Skills Development">Education &amp; Skills Development</option>
+                    <option value="Information & Communication Technology (ICT)">Information &amp; Communication Technology (ICT)</option>
+                    <option value="Finance, Trade & Economic Development">Finance, Trade &amp; Economic Development</option>
+                    <option value="Gender Equality & Social Inclusion">Gender Equality &amp; Social Inclusion</option>
+                    <option value="Urban Development & Housing">Urban Development &amp; Housing</option>
+                    <option value="Transport & Construction">Transport &amp; Construction</option>
+                    <option value="__OTHER__">Others (specify)</option>
+                </select>
+                <div id="sectorOtherWrapper" class="mt-2" style="display:none;">
+                    <label for="sectorOtherInput">Specify Other Sector:</label>
+                    <input type="text" id="sectorOtherInput" class="form-control" maxlength="120" />
+                </div>
+            </div>
+
+            <!-- Speciality -->
+            <div class="form-group">
+                <label>Area of Speciality:</label>
+                <select asp-for="Speciality" class="form-control" id="specialitySelect">
+                    <option value="">Expert's Speciality</option>
+                    <option value="Operations & Maintenance (O&M)">Operations &amp; Maintenance (O&amp;M)</option>
+                    <option value="Non-Revenue Water (NRW) management">Non-Revenue Water (NRW) management</option>
+                    <option value="Financial management">Financial management</option>
+                    <option value="WASH / Sanitation">WASH / Sanitation</option>
+                    <option value="Economist">Economist</option>
+                    <option value="Engineering - Design & Construction">Engineering - Design &amp; Construction</option>
+                    <option value="Electro-mechanical">Electro-mechanical</option>
+                    <option value="Utility management / Institutional Development & Reform">Utility management /Institutional Development &amp; Reform</option>
+                    <option value="Policy, Governance, Legal & Regulatory Framework">Policy, Governance, Legal &amp; Regulatory Framework</option>
+                    <option value="Environmental Impact Assessment & Social Safeguards">Environmental Impact Assessment &amp; Social Safeguards</option>
+                    <option value="Performance Management / M&E">Performance Management / M&amp;E</option>
+                    <option value="Water Quality & Lab Analysis">Water Quality &amp; Lab Analysis</option>
+                    <option value="Climate Change and Resilience">Climate Change and resilience</option>
+                    <option value="Hydrologist">Hydrologist</option>
+                    <option value="Water Resource Management">Water Resource Management</option>
+                    <option value="Training and Capacity Building">Training and Capacity Building</option>
+                    <option value="HR & Organizational Development">HR &amp; Organizational Development</option>
+                    <option value="Tariff Design">Tariff Design</option>
+                    <option value="Strategic Business Planning">Strategic Business Planning</option>
+                    <option value="Commercial Operations & CRM">Commercial Operations &amp; CRM</option>
+                    <option value="Project & Contract Management">Project &amp; Contract Management</option>
+                    <option value="Procurement">Procurement</option>
+                    <option value="Research and Surveys">Research and Surveys</option>
+                    <option value="Asset Management">Asset Management</option>
+                    <option value="PPPs">PPPs</option>
+                    <option value="ICT">ICT</option>
+                    <option value="GIS & Mapping">GIS &amp; Mapping</option>
+                    <option value="Rural water supply">Rural water supply</option>
+                    <option value="Gender & Social Inclusion">Gender &amp; Social Inclusion</option>
+                    <option value="__OTHER__">Other (specify)</option>
+                </select>
+                <div id="otherSpecialityWrapper" class="mt-2" style="display:none;">
+                    <label for="otherSpecialityInput">Specify Other Speciality:</label>
+                    <input type="text" id="otherSpecialityInput" class="form-control" maxlength="120" />
+                </div>
+            </div>
+
+            <!-- Other Key Expertise -->
+            <div class="form-group">
+                <label>Other Key Expertise:</label>
+                <select asp-for="SelectedOtherKeyExpertises" class="form-control" multiple id="otherKeyExpertiseSelect">
+                    <option value="TrainingAndCapacityBuilding">Training and Capacity Building</option>
+                    <option value="MandE">M&E</option>
+                    <option value="GenderAndSocial">Gender and social sciences</option>
+                    <option value="InstitutionalDevelopment">Institutional Development</option>
+                    <option value="Research">Research</option>
+                    <option value="Audit">Audit</option>
+                    <option value="StrategicPlanning">Strategic Planning</option>
+                    <option value="WaterAndSanitation">Water and sanitation</option>
+                    <option value="__OTHER__">Other (specify)</option>
+                </select>
+                <div id="otherKeyExpertiseWrapper" class="mt-2" style="display:none;">
+                    <label for="otherKeyExpertiseInput">Specify Other Key Expertise:</label>
+                    <input type="text" id="otherKeyExpertiseInput" class="form-control" maxlength="120" />
+                </div>
+            </div>
+
+            <!-- Education Level -->
+            <div class="form-group">
+                <label>Education Level:</label>
+                <select asp-for="Educations[0].Level" class="form-control" id="educationLevelSelect">
+                    <option value="">Please Select Level of Education</option>
+                    <option value="Bachelors">Bachelors</option>
+                    <option value="Masters">Masters</option>
+                    <option value="MBA">MBA</option>
+                    <option value="Ph.D">Ph.D</option>
+                    <option value="__OTHER__">Other (specify)</option>
+                </select>
+                <div id="educationLevelOtherWrapper" class="mt-2" style="display:none;">
+                    <label for="educationLevelOtherInput">Specify Other Education Level:</label>
+                    <input type="text" id="educationLevelOtherInput" class="form-control" maxlength="80" />
+                </div>
+            </div>
+
+            <!-- Certificates -->
+            <div class="form-group">
+                <label>Other Professional Certificates:</label>
+                <select asp-for="SelectedCertificates" class="form-control" multiple id="certificatesSelect">
+                    <option value="Artificial inteligence">Artificial inteligence</option>
+                    <option value="CCNA">CCNA</option>
+                    <option value="CISCO">CISCO</option>
+                    <option value="Executive Leadership Certificate">Executive Leadership Certificate</option>
+                    <option value="Project Management Professional (PMP)">Project Management Professional (PMP)</option>
+                    <option value="PRINCE2 Certification">PRINCE2 Certification</option>
+                    <option value="Certified Public Accountant (CPA)">Certified Public Accountant (CPA)</option>
+                    <option value="Certified Information Systems Auditor (CISA)">Certified Information Systems Auditor (CISA)</option>
+                    <option value="Chartered Institute of Procurement & Supply (CIPS)">Chartered Institute of Procurement & Supply (CIPS)</option>
+                    <option value="Certified Supply Chain Professional (CSCP)">Certified Supply Chain Professional (CSCP)</option>
+                    <option value="Chartered Financial Analyst (CFA)">Chartered Financial Analyst (CFA)</option>
+                    <option value="Professional in Human Resources (PHR)">Professional in Human Resources (PHR)</option>
+                    <option value="Senior Professional in Human Resources (SPHR)">Senior Professional in Human Resources (SPHR)</option>
+                    <option value="Chartered Institute of Personnel and Development (CIPD) Certification">Chartered Institute of Personnel and Development (CIPD) Certification</option>
+                    <option value="Chartered Institute of Marketing (CIM)">Chartered Institute of Marketing (CIM)</option>
+                    <option value="Chartered Institute of Management Accountants (CIMA)">Chartered Institute of Management Accountants (CIMA)</option>
+                    <option value="Professional Engineer (PE)">Professional Engineer (PE)</option>
+                    <option value="Chartered Engineer (CEng)">Chartered Engineer (CEng)</option>
+                    <option value="Chartered Scientist (CSci)">Chartered Scientist (CSci)</option>
+                    <option value="Certified Laboratory Professional">Certified Laboratory Professional</option>
+                    <option value="Certified Environmental Practitioner (CEP)">Certified Environmental Practitioner (CEP)</option>
+                    <option value="Environmental Impact Assessment (EIA) Practitioner Certification)">Environmental Impact Assessment (EIA) Practitioner Certification</option>
+                    <option value="Certified Information Systems Security Professional (CISSP)">Certified Information Systems Security Professional (CISSP)</option>
+                    <option value="Certified Quality Manager (CQM)">Certified Quality Manager (CQM)</option>
+                    <option value="Six Sigma Certification">Six Sigma Certification</option>
+                    <option value="GIS Professional (GISP)">GIS Professional (GISP)</option>
+                    <option value="Esri Technical Certification">Esri Technical Certification</option>
+                    <option value="Licensed Surveyor">Licensed Surveyor</option>
+                    <option value="Chartered Land Surveyor">Chartered Land Surveyor</option>
+                    <option value="Certified Market Researcher (CMRP)">Certified Market Researcher (CMRP)</option>
+                    <option value="Certified Social Researcher (CSR)">Certified Social Researcher (CSR)</option>
+                    <option value="Diploma in Legal Practice">Diploma in Legal Practice</option>
+                    <option value="Mediation and Arbitration Certifications">Mediation and Arbitration Certifications</option>
+                    <option value="International Bar Association (IBA) Certifications">International Bar Association (IBA) Certifications</option>
+                    <option value="International Comparative Legal Guide (ICLG) Certifications">International Comparative Legal Guide (ICLG) Certifications</option>
+                    <option value="__OTHER__">Other (specify)</option>
+                </select>
+                <div id="certificatesOtherWrapper" class="mt-2">
+                    <label for="certificatesOtherInput">Specify Other Certificate:</label>
+                    <input type="text" id="certificatesOtherInput" class="form-control" maxlength="120" />
+                </div>
+            </div>
+
+            <!-- African countries -->
+            <div class="form-group">
+                <label>Countries Worked In (Africa):</label>
+                <select asp-for="SelectedAfricanCountries" class="form-control" multiple id="africanCountriesSelect">
+                    @foreach (var c in africanCountries)
+                    {
+                        <option value="@c.Iso2" selected="@(Model.SelectedAfricanCountries?.Contains(c.Iso2, StringComparer.OrdinalIgnoreCase) == true ? "selected" : null)">@c.Name</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Professional Bodies:</label>
+                <div id="affiliationContainer">
+                    <input asp-for="Affiliations[0].Name" class="form-control" />
+                </div>
+                <button type="button" id="addAffiliation" class="btn btn-primary mt-2">Add Profession Body</button>
+            </div>
+
+            <div class="form-group">
+                <label>Upload New CV (optional):</label>
+                <input type="file" asp-for="CvFile" class="form-control" />
+                @if (!string.IsNullOrWhiteSpace(Model.CvFilePath))
+                {
+                    <small class="form-text text-muted">Current: <a href="@Model.CvFilePath" target="_blank">Download</a></small>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <button type="submit" class="btn btn-success">Save</button>
+        <a asp-action="ListOfExperts" class="btn btn-secondary ms-2">Cancel</a>
+    </div>
+</form>
+
+@section Scripts {
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
-        // Function to initialize Select2 for the nationality dropdown
-        function initializeSelect2(countries) {
-            $("#nationalityDropdown").select2({
-                placeholder: "Search for a country",
-                allowClear: true,
-                minimumInputLength: 0, // Set the minimum number of characters before showing results
-                data: countries.map(function (country) {
-                    return {
-                        id: country.name,
-                        text: country.name
-                    };
-                })
-            });
+        function CheckEmploymentStatus() {
+            var employedRadio = document.getElementById('employed');
+            var currentEmployerTextbox = document.getElementById('currentEmployerTextbox');
+            currentEmployerTextbox.style.display = employedRadio && employedRadio.checked ? 'block' : 'none';
         }
 
-        // Function to fetch countries
-        function getCountries(callback) {
-            $.ajax({
-                url: 'https://restcountries.com/v2/all',
-                type: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    callback(data);
-                },
-                error: function (error) {
-                    console.error('Error fetching countries:', error);
+        function setupSingleSelectWithOther(selectId, wrapperId, inputId) {
+            const sel = $('#' + selectId), wrap = $('#' + wrapperId), input = $('#' + inputId);
+            function resetIfNeeded() { if (sel.val() !== '__OTHER__') { wrap.hide(); input.val(''); } }
+            sel.on('change', function () { if (sel.val() === '__OTHER__') { wrap.show(); input.focus(); } else { resetIfNeeded(); } });
+            input.on('blur keydown', function (e) {
+                if (e.type === 'keydown' && e.key !== 'Enter') return;
+                if (sel.val() === '__OTHER__') {
+                    const custom = input.val().trim();
+                    if (custom) {
+                        if (sel.find('option[value="' + custom.replace(/"/g, '&quot;') + '"]').length === 0) {
+                            sel.append($('<option>', { value: custom, text: custom }));
+                        }
+                        sel.val(custom); wrap.hide();
+                    }
                 }
             });
         }
 
-        $(document).ready(function () {
-            // Update textarea when options are selected or deselected
-            $("#otherKeyExpertiseSelect").on("change", function () {
-                var selectedOptions = $("#otherKeyExpertiseSelect option:selected").map(function () {
-                    return $(this).text();
-                }).get().join(', ');
-
-                $("#selectedOptionsTextarea").val(selectedOptions);
+        function setupMultiSelectWithOther(selectId, wrapperId, inputId) {
+            const sel = $('#' + selectId), wrap = $('#' + wrapperId), input = $('#' + inputId);
+            sel.on('change', function () {
+                const values = sel.val() || [];
+                if (values.includes('__OTHER__')) { wrap.show(); input.focus(); } else { wrap.hide(); input.val(''); }
             });
-
-            // Add Contact
-            $("#addLanguage").click(function () {
-                var index = $("#languagesContainer input").length;
-
-                var newLanguageHtml = `
-                                            <div>
-                                                <label>Language${index + 1}:</label>
-                                                <input name="Languages[${index}].Type" class="form-control" />
-                                                <!-- Other contact fields... -->
-                                            </div>
-                                        `;
-
-                $("#languagesContainer").append(newLanguageHtml);
-            });
-
-            // Add Affiliation
-            $("#addAffiliation").click(function () {
-                var index = $("#affiliationContainer input").length;
-
-                var newAffiliationHtml = `
-                                                    <div>
-                                                        <label>Profession Body${index + 1}:</label>
-                                                                <input name="Affiliations[${index}].Name" class="form-control" />
-                                                        <!-- Other contact fields... -->
-                                                    </div>
-                                                `;
-
-                $("#affiliationContainer").append(newAffiliationHtml);
-            });
-
-            // Add phone contacts
-            $("#addContact").click(function () {
-                var index2 = $("#contactsContainer input").length;
-
-                var newContactHtml = `
-                                            <div>
-                                                <label>Phone Number${index2 + 1}:</label>
-                                                <input name="Contacts[${index2}].Language" class="form-control" />
-                                                <!-- Other contact fields... -->
-                                            </div>
-                                        `;
-
-                $("#contactsContainer").append(newContactHtml);
-            });
-
-            // Add Education
-            // $("#addEducation").click(function () {
-            //     var index = $("#educationsContainer input").length;
-
-            //     var newEducationHtml = `
-            //                                 <div>
-            //                                     <label>Education Level:</label>
-            //                                     <input name="Educations[${index}].Level" class="form-control" />
-            //                                     <!-- Other education fields... -->
-            //                                 </div>
-            //                             `;
-
-            //     $("#educationsContainer").append(newEducationHtml);
-            // });
-            // Add Education
-            $("#addEducation").click(function () {
-                var index = $("#educationsContainer input").length;
-
-                var newEducationHtml = `
-                                            <div>
-                                                <label>Education Level:</label>
-                                                <select name="Educations[${index}].Level" class="form-control">
-                                                    <option selected disabled> Please Select Level of Education</option>
-                                                    <option value="Bachelors">Bachelors</option>
-                                                    <option value="Masters">Masters</option>
-                                                    <option value="MBA">MBA</option>
-                                                    <option value="Ph.D">Ph.D</option>
-                                                </select>
-                                                <!-- Other education fields... -->
-                                            </div>
-                                        `;
-
-                $("#educationsContainer").append(newEducationHtml);
-            });
-
-            getCountries(function (countries) {
-                initializeSelect2(countries);
-
-                // Get the current nationality of the expert and set it as selected
-                var currentNationality = "@Model.Nationality";
-                if (currentNationality) {
-                    $("#nationalityDropdown").val(currentNationality).trigger("change");
+            function commitCustom() {
+                const values = sel.val() || [];
+                if (!values.includes('__OTHER__')) return;
+                const custom = input.val().trim();
+                if (!custom) return;
+                if (sel.find('option[value="' + custom.replace(/"/g, '&quot;') + '"]').length === 0) {
+                    sel.append($('<option>', { value: custom, text: custom }));
                 }
+                const newValues = values.filter(v => v !== '__OTHER__'); newValues.push(custom);
+                sel.val(newValues).trigger('change'); input.val(''); wrap.hide();
+            }
+            input.on('blur', commitCustom);
+            input.on('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); commitCustom(); } });
+        }
+
+        $(function () {
+            CheckEmploymentStatus();
+
+            setupSingleSelectWithOther('categorySelect', 'categoryOtherWrapper', 'categoryOtherInput');
+            setupSingleSelectWithOther('sectorSelect', 'sectorOtherWrapper', 'sectorOtherInput');
+            setupSingleSelectWithOther('specialitySelect', 'otherSpecialityWrapper', 'otherSpecialityInput');
+            setupSingleSelectWithOther('educationLevelSelect', 'educationLevelOtherWrapper', 'educationLevelOtherInput');
+
+            setupMultiSelectWithOther('otherKeyExpertiseSelect', 'otherKeyExpertiseWrapper', 'otherKeyExpertiseInput');
+            setupMultiSelectWithOther('certificatesSelect', 'certificatesOtherWrapper', 'certificatesOtherInput');
+
+            $('#africanCountriesSelect').select2({ placeholder: 'Select African countries', width: '100%' });
+
+            // Next indices from server model counts
+            var nextLangIndex = @((Model.Languages?.Count ?? 0));
+            var nextContactIndex = @((Model.Contacts?.Count ?? 0));
+
+            $("#addLanguage").on("click", function () {
+                $("#languagesContainer").append(
+                    `<div class="mt-2 language-item">
+                        <label>Language ${nextLangIndex + 1}:</label>
+                        <input name="Languages[${nextLangIndex}].Type" class="form-control" />
+                    </div>`);
+                nextLangIndex++;
+            });
+
+            $("#addContact").on("click", function () {
+                $("#contactsContainer").append(
+                    `<div class="mt-2 contact-item">
+                        <label>Contact ${nextContactIndex + 1}:</label>
+                        <input name="Contacts[${nextContactIndex}].PhoneNumber" class="form-control" />
+                    </div>`);
+                nextContactIndex++;
+            });
+
+            // Prevent unfinished "__OTHER__"
+            $('#editExpertForm').on('submit', function () {
+                let invalid = false;
+                $('select').each(function () {
+                    const $s = $(this);
+                    if ($s.val() === '__OTHER__' || ($s.val() && Array.isArray($s.val()) && $s.val().includes('__OTHER__'))) {
+                        alert('You selected "Other" but did not provide a custom value for: ' + ($s.attr('id') || $s.attr('name')));
+                        invalid = true; return false;
+                    }
+                });
+                return !invalid;
             });
         });
     </script>

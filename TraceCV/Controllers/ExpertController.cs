@@ -41,6 +41,17 @@ namespace TraceCV.Controllers
 
             MapSelections(expert);
 
+            // Remove blank children so they are not persisted as empty rows
+            expert.Contacts = expert.Contacts?
+                .Where(c => !string.IsNullOrWhiteSpace(c.PhoneNumber))
+                .ToList() ?? new List<Contact>();
+            expert.Languages = expert.Languages?
+                .Where(l => !string.IsNullOrWhiteSpace(l.Type))
+                .ToList() ?? new List<Language>();
+            expert.Educations = expert.Educations?
+                .Where(e => !string.IsNullOrWhiteSpace(e.Level))
+                .ToList() ?? new List<Education>();
+
             if (!ModelState.IsValid)
                 return View(expert);
 
@@ -69,57 +80,7 @@ namespace TraceCV.Controllers
             }
         }
 
-        public async Task<IActionResult> ListOfExperts(string name, string nationality, string keysector,
-            string gender, string experience, string levelofeducation, string area_of_speciality)
-        {
-            try
-            {
-                var experts = _databaseHandler.Experts
-                    .Include(e => e.Educations)
-                    .AsQueryable();
-
-                if (!string.IsNullOrWhiteSpace(name))
-                    experts = experts.Where(e => e.Name.Contains(name));
-
-                if (!string.IsNullOrWhiteSpace(nationality))
-                    experts = experts.Where(e => e.Nationality.Contains(nationality));
-
-                if (!string.IsNullOrWhiteSpace(gender))
-                    experts = experts.Where(e => e.Gender.Contains(gender));
-
-                if (!string.IsNullOrWhiteSpace(keysector))
-                    experts = experts.Where(e => e.Sector.Contains(keysector));
-
-                if (!string.IsNullOrWhiteSpace(levelofeducation))
-                    experts = experts.Where(e => e.Educations.Any(ed => ed.Level.Contains(levelofeducation)));
-
-                if (!string.IsNullOrWhiteSpace(area_of_speciality))
-                    experts = experts.Where(e => e.Speciality.Contains(area_of_speciality));
-
-                List<Expert> result;
-
-                if (!string.IsNullOrWhiteSpace(experience) && int.TryParse(experience, out int minExp))
-                {
-                    var temp = await experts.ToListAsync();
-                    result = temp
-                        .Where(e => int.TryParse(e.experience, out var yrs) && yrs >= minExp)
-                        .ToList();
-                }
-                else
-                {
-                    result = await experts.ToListAsync();
-                }
-
-                return View(result);
-            }
-            catch (Exception ex)
-            {
-                TempData["ErrorMessage"] = $"An error occurred while retrieving experts. Error: {ex.Message}";
-                return View(new List<Expert>());
-            }
-        }
-
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
             var expert = _databaseHandler.Experts
                 .Include(e => e.Languages)
@@ -128,12 +89,14 @@ namespace TraceCV.Controllers
                 .Include(e => e.Affiliations)
                 .Include(e => e.OtherKeyExpertises)
                 .Include(e => e.Certificates)
+                .Include(e => e.AfricanCountriesWorked)
                 .FirstOrDefault(e => e.Id == id);
 
             if (expert == null)
                 return NotFound();
 
-            EnsureSeed(expert);
+            // Clean up empties and ensure first non-empty education is at [0]
+            NormalizeCollectionsForDisplay(expert);
 
             expert.SelectedOtherKeyExpertises = expert.OtherKeyExpertises?
                 .Where(o => !string.IsNullOrWhiteSpace(o.Expertise))
@@ -143,6 +106,11 @@ namespace TraceCV.Controllers
             expert.SelectedCertificates = expert.Certificates?
                 .Where(c => !string.IsNullOrWhiteSpace(c.Name))
                 .Select(c => c.Name!)
+                .ToList() ?? new List<string>();
+
+            expert.SelectedAfricanCountries = expert.AfricanCountriesWorked?
+                .Where(w => !string.IsNullOrWhiteSpace(w.CountryIso2))
+                .Select(w => w.CountryIso2)
                 .ToList() ?? new List<string>();
 
             ViewBag.Countries = _countryProvider.GetAllCountries();
@@ -174,6 +142,7 @@ namespace TraceCV.Controllers
                     .Include(e => e.Educations)
                     .Include(e => e.OtherKeyExpertises)
                     .Include(e => e.Certificates)
+                    .Include(e => e.AfricanCountriesWorked)
                     .FirstOrDefaultAsync(e => e.Id == id);
 
                 if (existing == null)
@@ -183,6 +152,7 @@ namespace TraceCV.Controllers
 
                 existing.OtherKeyExpertises = expert.OtherKeyExpertises;
                 existing.Certificates = expert.Certificates;
+                existing.AfricanCountriesWorked = expert.AfricanCountriesWorked;
 
                 if (expert.CvFile != null && expert.CvFile.Length > 0)
                 {
@@ -212,18 +182,63 @@ namespace TraceCV.Controllers
             }
         }
 
-        public async Task<IActionResult> Delete(int id)
+        [HttpGet]
+        public async Task<IActionResult> ListOfExperts(
+            string name,
+            string nationality,
+            string keysector,
+            string gender,
+            string experience,
+            string levelofeducation,
+            string area_of_speciality)
         {
-            var expert = await _databaseHandler.Experts.FindAsync(id);
-            if (expert == null)
-                return NotFound();
+            try
+            {
+                var experts = _databaseHandler.Experts
+                    .Include(e => e.Educations)
+                    .AsQueryable();
 
-            _databaseHandler.Experts.Remove(expert);
-            await _databaseHandler.SaveChangesAsync();
-            return RedirectToAction(nameof(ListOfExperts));
+                if (!string.IsNullOrWhiteSpace(name))
+                    experts = experts.Where(e => e.Name != null && e.Name.Contains(name));
+
+                if (!string.IsNullOrWhiteSpace(nationality))
+                    experts = experts.Where(e => e.Nationality != null && e.Nationality.Contains(nationality));
+
+                if (!string.IsNullOrWhiteSpace(gender))
+                    experts = experts.Where(e => e.Gender != null && e.Gender.Contains(gender));
+
+                if (!string.IsNullOrWhiteSpace(keysector))
+                    experts = experts.Where(e => e.Sector != null && e.Sector.Contains(keysector));
+
+                if (!string.IsNullOrWhiteSpace(levelofeducation))
+                    experts = experts.Where(e => e.Educations.Any(ed => ed.Level != null && ed.Level.Contains(levelofeducation)));
+
+                if (!string.IsNullOrWhiteSpace(area_of_speciality))
+                    experts = experts.Where(e => e.Speciality != null && e.Speciality.Contains(area_of_speciality));
+
+                List<Expert> result;
+
+                // Experience filter: materialize then parse to avoid EF translation issues
+                if (!string.IsNullOrWhiteSpace(experience) && int.TryParse(experience, out int minExp))
+                {
+                    var temp = await experts.ToListAsync();
+                    result = temp.Where(e => int.TryParse(e.experience, out var yrs) && yrs >= minExp).ToList();
+                }
+                else
+                {
+                    result = await experts.ToListAsync();
+                }
+
+                return View(result);
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = $"An error occurred while retrieving experts. Error: {ex.Message}";
+                return View(new List<Expert>());
+            }
         }
 
-        private static void EnsureSeed(Expert expert)
+        private void EnsureSeed(Expert expert)
         {
             if (expert.Contacts == null || expert.Contacts.Count == 0)
                 expert.Contacts = new List<Contact> { new Contact() };
@@ -233,13 +248,14 @@ namespace TraceCV.Controllers
                 expert.Educations = new List<Education> { new Education() };
             if (expert.Affiliations == null || expert.Affiliations.Count == 0)
                 expert.Affiliations = new List<Affiliation> { new Affiliation() };
-            if (expert.SelectedOtherKeyExpertises == null)
-                expert.SelectedOtherKeyExpertises = new List<string>();
-            if (expert.SelectedCertificates == null)
-                expert.SelectedCertificates = new List<string>();
+
+            expert.SelectedOtherKeyExpertises ??= new List<string>();
+            expert.SelectedCertificates ??= new List<string>();
+            expert.SelectedAfricanCountries ??= new List<string>();
+            expert.AfricanCountriesWorked ??= new List<WorkedCountry>();
         }
 
-        private static void MapSelections(Expert expert)
+        private void MapSelections(Expert expert)
         {
             expert.OtherKeyExpertises = expert.SelectedOtherKeyExpertises?
                 .Distinct()
@@ -253,6 +269,61 @@ namespace TraceCV.Controllers
                 .Select(s => new Certificate { Name = s })
                 .ToList() ?? new List<Certificate>();
 
+            // Map African countries (ISO2 -> entity with name)
+            var all = _countryProvider.GetAllCountries();
+            var byIso = all.ToDictionary(c => c.Iso2, c => c.Name, StringComparer.OrdinalIgnoreCase);
+
+            expert.AfricanCountriesWorked = expert.SelectedAfricanCountries?
+                .Distinct(StringComparer.OrdinalIgnoreCase)
+                .Where(iso => !string.IsNullOrWhiteSpace(iso))
+                .Select(iso => new WorkedCountry
+                {
+                    CountryIso2 = iso.ToUpperInvariant(),
+                    CountryName = byIso.TryGetValue(iso, out var name) ? name : iso.ToUpperInvariant()
+                })
+                .ToList() ?? new List<WorkedCountry>();
+        }
+
+        // Add this helper to the controller class
+        private static void NormalizeCollectionsForDisplay(Expert expert)
+        {
+            // Drop empties
+            if (expert.Contacts != null)
+                expert.Contacts = expert.Contacts
+                    .Where(c => !string.IsNullOrWhiteSpace(c.PhoneNumber))
+                    .ToList();
+
+            if (expert.Languages != null)
+                expert.Languages = expert.Languages
+                    .Where(l => !string.IsNullOrWhiteSpace(l.Type))
+                    .ToList();
+
+            if (expert.Educations != null && expert.Educations.Count > 0)
+            {
+                // Put first non-empty Level at index 0
+                var firstNonEmpty = expert.Educations.FirstOrDefault(e => !string.IsNullOrWhiteSpace(e.Level));
+                if (firstNonEmpty != null)
+                {
+                    var idx = expert.Educations.IndexOf(firstNonEmpty);
+                    if (idx > 0)
+                    {
+                        (expert.Educations[0], expert.Educations[idx]) = (expert.Educations[idx], expert.Educations[0]);
+                    }
+                }
+
+                // Keep only entries that have a Level (UI only supports one at the moment)
+                expert.Educations = expert.Educations
+                    .Where(e => !string.IsNullOrWhiteSpace(e.Level))
+                    .ToList();
+            }
+
+            // Ensure at least one placeholder item so the UI has an input
+            if (expert.Contacts == null || expert.Contacts.Count == 0)
+                expert.Contacts = new List<Contact> { new Contact() };
+            if (expert.Languages == null || expert.Languages.Count == 0)
+                expert.Languages = new List<Language> { new Language() };
+            if (expert.Educations == null || expert.Educations.Count == 0)
+                expert.Educations = new List<Education> { new Education() };
         }
     }
 }
